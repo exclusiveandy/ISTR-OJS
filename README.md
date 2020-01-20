@@ -17,7 +17,7 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 * Editor in Chief - <thing's to do Isaac>
 * Internal Reviewer - <thing's to do Isaac> 
 * External Reviewer - <thing's to do Isaac>
-* Publication Office - <thing's to do Isaac>s
+* Publication Office - <thing's to do Isaac>ss
 
 
 ### Installation Guide

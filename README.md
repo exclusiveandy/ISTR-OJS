@@ -12,7 +12,7 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 
 ### Technical Users
 
-* Author - asfsadfsadfsaf
+* Author - 
 * Managing Editor
 * Editor in Chief
 * Internal Reviewer

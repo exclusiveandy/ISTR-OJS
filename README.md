@@ -9,6 +9,9 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 ### Software Requirements
 
 * XAMPP v.3.2.4
+* Microsoft Word 2007 and above
+* PDF Reader 2007 and above
+
 
 ### Technical Users
 
@@ -26,4 +29,4 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 * Place the downloaded repository inside the folder htdocs in xampp destination folder
 * Start Apache and MySQL of xampp
 * Import the sql file in the PHPmyAdmin server
-* Run the application through http://localhost/foldername/index.php 
+* Run the application through http://localhost/foldername/index.php

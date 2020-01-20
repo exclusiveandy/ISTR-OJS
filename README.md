@@ -9,9 +9,6 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 ### Software Requirements
 
 * XAMPP v.3.2.4
-* Microsoft Word 2007 and above
-* PDF Reader 2007 and above
-
 
 ### Technical Users
 
@@ -20,13 +17,14 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 * Editor in Chief - <thing's to do Isaac>
 * Internal Reviewer - <thing's to do Isaac> 
 * External Reviewer - <thing's to do Isaac>
-* Publication Office - <thing's to do Isaac>
+* Publication Office - <thing's to do Isaac>s
 
 
 ### Installation Guide
 
 * Install the xampp v.3.2.4 server on your PC
-* Place the downloaded repository inside the folder htdocs in xampp destination folder
+* Create a folder in htdocs, name it istr
+* Place the downloaded repository inside the created folder istr in htdocs in xampp destination folder
 * Start Apache and MySQL of xampp
 * Import the sql file in the PHPmyAdmin server
-* Run the application through http://localhost/foldername/index.php
+* Run the application through http://localhost/istr/index.php

@@ -12,9 +12,9 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 
 ### Technical Users
 
-* Author - <thing's to do Isaac> 
-* Managing Editor - <thing's to do Isaac> 
-* Editor in Chief  - <thing's to do Isaac> 
-* Internal Reviewer  - <thing's to do Isaac> 
-* External Reviewer  - <thing's to do Isaac> 
-* Publication Office  - <thing's to do Isaac> 
+* Author 
+* Managing Editor  
+* Editor in Chief  
+* Internal Reviewer   
+* External Reviewer   
+* Publication Office   

@@ -29,8 +29,8 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 * Import the sql file in the PHPmyAdmin server
 * Run the application through http://localhost/istr/index.php
 
-### Additional / Restriction!
+### Additional / Restriction⚠️ 
 
 1. Can use tagalog and english language for issues
 2. Do not edit ``master`` branch
-3. only @exclusiveandy can merge
+3. Only exclusiveandy can merge pull request

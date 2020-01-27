@@ -1,8 +1,11 @@
 <?php include "pagecomponents/maintopnav.php";?>
 <?php include "../function.php"; ?>
+
     <!-- Main content -->
-    <div class="content">
-      <div class="container">
+    <div class="content-wrapper">
+    
+    <div class="content-header">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-lg-6">
 

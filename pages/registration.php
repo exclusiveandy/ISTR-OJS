@@ -34,7 +34,7 @@ include "../function.php";
                 set_message("<p class='text-center'>Thank for your registration.<br></p><p>Please check your email or spam folder for activation link</p>");
                 $subject = "Acitvate Account";
                 $msg = "Hello thank you for registering in Polytechnic University Of the Philippines. For your account activation kindly click the link
-                <a href=\"http://localhost/OJS/istr/activate.php?email=$email\">Link Here</a>";
+                <a href=\"http://localhost/istr-ojs/pages/activate.php?email=$email\">Link Here</a>";
                 $name = $lname.", ".$mname.", ".$fname;
                 send_email($email, $subject, $msg);
                 $response['status'] = "register_guide.php";

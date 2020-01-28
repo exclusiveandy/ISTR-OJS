@@ -12,12 +12,14 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 
 ### Technical Users
 
-* Author  - <thing's to do Isaac>
-* Managing Editor - <thing's to do Isaac> 
-* Editor in Chief - <thing's to do Isaac>
-* Internal Reviewer - <thing's to do Isaac> 
-* External Reviewer - <thing's to do Isaac>
-* Publication Office - <thing's to do Isaac>
+* Author              -     the one who submits research articles / manuscript / documents
+* Managing Editor     -     the one who reports directly to Editor in Chief and oversees all aspect of publication
+* Editor in Chief     -     the one who has final responsibility for its operations and policies
+* Internal Reviewer   -     the one who gave evaluation in the document that resides along the university 
+* External Reviewer   -     the one who gave evaluation in the document that resides in another university
+* Proofreader         -     the one who detect and correct production errors of text or art
+* Layout Editor       -     the one whos is responsible for designing the format of publications
+* Publication Office  -     the one who publish the submitted document
 
 
 ### Installation Guide

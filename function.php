@@ -43,7 +43,7 @@ function forgot_password(){
                             $validation_code = escape_string(md5($email . microtime()));
                             $subject = "Please reset your password";
                             $msg = "Here is your password reset code <b>{$validation_code}</b>
-                            Click here to reset your password http://localhost/OJS/istr/code.php?email=$email&code=$validation_code";
+                            Click here to reset your password http://localhost/istr-ojs/pages/code.php?email=$email&code=$validation_code";
                             setcookie('temp_access_code', $validation_code, time()+900);
                             send_email($email, $subject, $msg);
                             $sql = query("UPDATE user_table set validation_code = '{$validation_code}' where user_email = '{$email}'");

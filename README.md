@@ -9,6 +9,9 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 ### Software Requirements
 
 * XAMPP v.3.2.4
+* PHP 5.3.3+
+* Chrome 79 (Recommended)
+* Word 2007 or Latest
 
 ### Technical Users
 

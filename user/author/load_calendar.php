@@ -1,5 +1,5 @@
 <?php
-include "../../../function.php";
+include "../../function.php";
   date_default_timezone_set('Asia/Manila');
   $date = date("Y-m-d");  
 
@@ -15,10 +15,6 @@ $calendar_events = query("SELECT announcement_id, announcement_title, announceme
 	'date' => $row['announcement_date']);		
 	}	
 	echo json_encode($data);
-
-
-
-
 
 
 

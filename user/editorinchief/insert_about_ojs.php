@@ -1,5 +1,5 @@
 <?php
- include "../../../function.php"; 
+ include "../../function.php"; 
 if(!empty($_POST))
 {
 	$title = $_POST['about_ojs_title'];

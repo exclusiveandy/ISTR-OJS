@@ -1,7 +1,7 @@
 
 
 <?php
- include "../../../function.php"; 
+ include "../../function.php"; 
 if(isset($_POST['id']))
 {
 	$volume_id = $_POST['id'];

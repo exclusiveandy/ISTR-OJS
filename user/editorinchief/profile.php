@@ -1,4 +1,4 @@
-<?php include "header.php" ;
+<?php include "../usercomponents/usernav.php" ; 
 validate();
 if(isset($_GET['id']))
 {

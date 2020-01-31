@@ -1,5 +1,5 @@
 <?php
- include "../../../function.php"; 
+ include "../../function.php"; 
 if(isset($_POST['picture_id']))
 {
 	$picture_id = $_POST['picture_id'];

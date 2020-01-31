@@ -1,7 +1,7 @@
 
   <!-- Navbar -->
   <?php
-    include "header.php";
+  include "../usercomponents/usernav.php" ;
 validate();
   ?>
 

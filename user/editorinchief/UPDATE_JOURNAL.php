@@ -1,6 +1,6 @@
             
      <?php
- include "../../../function.php";
+ include "../../function.php";
 
      			$title = escape_string($_POST['title']);
              

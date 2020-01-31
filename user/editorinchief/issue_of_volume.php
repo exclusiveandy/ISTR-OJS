@@ -1,4 +1,4 @@
-<?php include("header.php");?>
+<?php include "../usercomponents/usernav.php" ; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -31,7 +31,7 @@
 
 
           <div class="card-body">
-            <input type"text" id="r_id" value="<?php echo $_GET['r_id'];?>" hidden="true">
+            <input type="text" id="r_id" value="<?php echo $_GET['r_id'];?>" hidden="true">
             <dl class="dl-horizontal">
               <?php if(isset($_GET['r_id']))
               {

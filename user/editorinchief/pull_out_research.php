@@ -1,6 +1,6 @@
 
 <?php
- include "../../../function.php"; 
+ include "../../function.php"; 
   $research_id = escape_string($_POST['r_id']);
   $user_id = escape_string($_POST['u_id']);
     date_default_timezone_set('Asia/Manila');

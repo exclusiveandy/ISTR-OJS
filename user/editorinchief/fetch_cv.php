@@ -1,5 +1,6 @@
 <?php
- include "../../../function.php"; 
+ include "../../function.php"; 
+ 
 if(isset($_POST['user_id']))
 {
 	$user_id = $_POST['user_id'];
@@ -7,7 +8,7 @@ if(isset($_POST['user_id']))
 	confirm($user_query);
 	$row = mysqli_fetch_array($user_query);
 	$row['header'] = "Ciriculum Vitae: ".$row['FULLNAME'];
-	$row['pdf'] = "../../../upload_pdf_file/".$row['pdf_file'].".pdf";
+	$row['pdf'] = "../../uploads/cv".$row['pdf_file'].".pdf";
 	echo json_encode($row);
 	
 

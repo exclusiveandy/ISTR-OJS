@@ -1,5 +1,7 @@
 <?php
- include "../../../function.php"; 
+
+include "../../function.php"; 
+
 if(isset($_POST['download_id']))
 {
 	$download_id = $_POST['download_id'];

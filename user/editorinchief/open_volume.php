@@ -1,4 +1,4 @@
-<?php include("header.php");?>
+<?php include "../usercomponents/usernav.php" ; ?>
      <?php 
         $id = $_SESSION['id'];
         $journal_query = query("SELECT j1.journal_id, journal_name from journal_table j1 

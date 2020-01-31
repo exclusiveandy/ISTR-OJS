@@ -1,7 +1,8 @@
-<?php include "header.php";
+<?php include "../usercomponents/usernav.php" ; 
+
 if(!isset($_SESSION['id']))
 {
-redirect('../../login.php');
+redirect('../../pages/login.php');
 }
   ?>
   <!-- Content Wrapper. Contains page content -->

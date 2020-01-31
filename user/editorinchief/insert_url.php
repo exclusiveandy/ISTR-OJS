@@ -1,7 +1,7 @@
 
 
 <?php
- include "../../../function.php"; 
+ include "../../function.php"; 
 if(!empty($_POST))
 {
 	$url = escape_string($_POST['url']);

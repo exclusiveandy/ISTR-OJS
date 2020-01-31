@@ -1,5 +1,5 @@
 <?php
- include "../../../function.php"; 
+ include "../../function.php"; 
 if(!empty($_POST))
 {
 	$journal_id = escape_string($_POST['journal_id']);

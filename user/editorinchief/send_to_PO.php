@@ -1,5 +1,5 @@
 <?php
-include "../../../function.php";
+include "../../function.php";
 
 if(isset($_POST['r_id']) && isset($_POST['remarks']) )
 {

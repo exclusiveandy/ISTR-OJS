@@ -6,13 +6,13 @@
    <div class=row>
       <div class="card-body login-card-body">
         <?php display_message(); ?>
-</div>
+      </div>
    </div>
     <!-- /.login-logo -->
     <div class="card">
       <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to submit your paper</p>
-  <?php login(); ?>
+        <?php login(); ?>
         <form action="login.php" method="post">
           <div class="input-group mb-3">
             <input type="email" class="form-control" placeholder="Email" name="email" id="email">
@@ -38,8 +38,8 @@
             
               <div class="icheck-primary">
                 
-            <a href="register.php" class="text-center">Register as an author</a></br>
-          <a href="forgotpassword.php" class="text-center">Forgot Password?</a>
+            <a href="register.php" class="text-center">Register as an author</a><br>
+            <a href="forgotpassword.php" class="text-center">Forgot Password?</a>
               </div>
             </div>
             <!-- /.col -->

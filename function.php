@@ -406,8 +406,8 @@ function login()
                 {
                     $message = <<<END
                     <div class="alert alert-dark" role="alert">
-  *Empty Fields
-</div>
+                    *Empty Fields
+                    </div>
 
 END;
                     echo $message;

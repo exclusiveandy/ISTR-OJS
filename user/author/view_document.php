@@ -1,4 +1,4 @@
-<?php include("header.php");?>
+<?php include("../usercomponents/usernav.php"); ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

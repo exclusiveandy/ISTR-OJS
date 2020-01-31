@@ -1,8 +1,9 @@
-<?php include "header.php";
+<?php include("../usercomponents/usernav.php");
 if(!isset($_SESSION['id']))
 {
-redirect('../../login.php');
+redirect('../../pages/login.php');
 }
+
   ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -76,7 +77,7 @@ redirect('../../login.php');
 </div>
 <!-- ./wra
 
-<!-- jQuery -->
+
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -1,5 +1,6 @@
 <?php
- include "../../../function.php"; 
+ include "../../function.php";
+ 
 if(!empty($_POST))
 {
 	$output = '';

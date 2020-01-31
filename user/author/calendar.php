@@ -1,7 +1,7 @@
 <?php include "header.php";
 if(!isset($_SESSION['id']))
 {
-redirect('../../login.php');
+redirect('../../pages/login.php');
 }
   ?>
   <!-- Content Wrapper. Contains page content -->
@@ -29,9 +29,9 @@ redirect('../../login.php');
     <div class="card-header with-border">
             <h3 class="card-title"><b>Calendar View</b></h3>
           </div>
-  <br />
-  <h2 align="center">Calendar</h2>
-  <br />
+  <br>
+  <h2 class="text-center">Calendar</h2>
+  <br>
   <div class="container">
    <div id="calendar"></div>
   </div>

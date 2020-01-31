@@ -1,4 +1,4 @@
-<?php include("header.php");?>
+<?php include("../usercomponents/usernav.php");?>
   
 
   <div class="content-wrapper">
@@ -105,17 +105,6 @@
           <button type="button" class="btn btn-primary">Download Journal Template</button>
         </div>        <!-- /.card-footer-->
       </div>      <!-- /.card -->
-
-
-
-
-
-
-
-
-
-
-
 
 
 

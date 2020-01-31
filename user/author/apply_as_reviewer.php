@@ -1,4 +1,4 @@
-<?php include("header.php");?>
+<?php include("../usercomponents/usernav.php");?>
   
 
   <div class="content-wrapper">
@@ -204,6 +204,7 @@ if(row_count($apply_as_reviewer) == 1)
     });
   });
 </script>
+
 <script>
 		$(document).ready(function(){
 		$("#apply_reviewer").hover(function(){

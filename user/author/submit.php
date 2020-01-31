@@ -1,7 +1,7 @@
 <!-- Navbar -->
   <?php
-    include "header.php";
-validate();
+    include("../usercomponents/usernav.php"); 
+    validate();
   ?>
 <style>
   .loading-bar{

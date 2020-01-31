@@ -1,4 +1,4 @@
-  <?php include("header.php");?>
+<?php include("../usercomponents/usernav.php");?>
 
  
   <!-- Content Wrapper. Contains page content -->
@@ -379,11 +379,11 @@
 
                           <br>
                           <hr>
- <div id="loader" style="display: none;
- text-align: center;
-  ">
-    <img src="../../images/loading2.gif">
-</div>
+                        <div id="loader" style="display: none;
+                        text-align: center;
+                          ">
+                            <img src="../../images/loading2.gif">
+                        </div>
                         <a href="submit" id="submit"  class="btn btn-block btn-success">Submit</a>
                       
 

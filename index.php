@@ -169,8 +169,8 @@ $row_journal = fetch_assoc($journal_query);
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <a href="journal_view.php?id=<?php echo $row_journal['journal_id'];?>" type="button" class="btn btn-primary">View</a>
-                                <a href="archieves.php?id=<?php echo $row_journal['journal_id'];?>" type="button" class="btn btn-primary">Archives</a>
+                                <a href="pages/journal_view.php?id=<?php echo $row_journal['journal_id'];?>" type="button" class="btn btn-primary">View</a>
+                                <a href="pages/archieves.php?id=<?php echo $row_journal['journal_id'];?>" type="button" class="btn btn-primary">Archives</a>
                             </div>
                             <!-- /.card-footer-->
                         </div>
@@ -219,7 +219,7 @@ $row_announcement = fetch_assoc($Announcement_query);
                                 <p class="card-text " style="overflow: hidden; white-space: normal; text-overflow: ellipsis; height: 115px;">
                                     <?php echo $row_announcement['announcement_description'];?>
                                 </p>
-                                <a href="announcements.php" class="card-link">View</a>
+                                <a href="pages/announcements.php" class="card-link">View</a>
                             </div>
                         </div>
 

@@ -498,7 +498,7 @@ END;
                             $_SESSION['id'] = $db_id;
                             $_SESSION['email'] = $db_email;
                             $_SESSION['affi'] = $db_affi;
-                            redirect("user/author/home.php");
+                            redirect("../user/author/home.php");
                         }
                         else
                         {
@@ -539,7 +539,7 @@ END;
                             $_SESSION['email'] = $db_email;
                             $_SESSION['affi'] = $db_affi;
                             $_SESSION['journal_id'] = $db_journal;
-                            redirect("user/editorinchief/home.php");
+                            redirect("../user/editorinchief/home.php");
                         }
                         else
                         {
@@ -581,7 +581,7 @@ END;
                             $_SESSION['affi'] = $db_affi;
                             $_SESSION['journal_id'] = $db_journal;
 
-                            redirect("user/managingeditor/home.php");
+                            redirect("../user/managingeditor/home.php");
                         }
                         else
                         {
@@ -626,7 +626,7 @@ END;
                             $_SESSION['affi'] = $db_affi;
                             $_SESSION['journal_id'] = $db_journal;
 
-                            redirect("user/InternalReviewer/home.php");
+                            redirect("../user/InternalReviewer/home.php");
                         }
                         else
                         {
@@ -671,7 +671,7 @@ END;
                             $_SESSION['affi'] = $db_affi;
                             $_SESSION['journal_id'] = $db_journal;
 
-                            redirect("user/externalreviewer/home.php");
+                            redirect("../user/externalreviewer/home.php");
                         }
                         else
                         {
@@ -714,7 +714,7 @@ END;
                             $_SESSION['id'] = $db_id;
                             $_SESSION['email'] = $db_email;
                             $_SESSION['affi'] = $db_affi;
-                            redirect("user/layouteditor/home.php");
+                            redirect("../user/layouteditor/home.php");
                         }
                         else
                         {
@@ -756,7 +756,7 @@ END;
                             $_SESSION['id'] = $db_id;
                             $_SESSION['email'] = $db_email;
                             $_SESSION['affi'] = $db_affi;
-                            redirect("user/proofreader/home.php");
+                            redirect("../user/proofreader/home.php");
                         }
                         else
                         {
@@ -796,7 +796,7 @@ END;
                             $_SESSION['id'] = $db_id;
                             $_SESSION['email'] = $db_email;
                             $_SESSION['affi'] = $db_affi;
-                            redirect("user/publicationoffice/home.php");
+                            redirect("../user/publicationoffice/home.php");
                         }
                         else
                         {
@@ -836,7 +836,7 @@ END;
                             $_SESSION['id'] = $db_id;
                             $_SESSION['email'] = $db_email;
                             $_SESSION['affi'] = $db_affi;
-                            redirect("user/admin/home.php");
+                            redirect("../user/admin/home.php");
                         }
                         else
                         {

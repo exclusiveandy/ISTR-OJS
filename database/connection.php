@@ -1,6 +1,6 @@
 <?php
 
-$connection = mysqli_connect('localhost', 'root', '', 'ojs');
+$connection = mysqli_connect('localhost:8111', 'root', 'password', 'ojs');
 if($connection){ 
 
 }

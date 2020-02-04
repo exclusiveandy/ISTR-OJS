@@ -1,6 +1,5 @@
-
-<?php include "components/maintopnav.php";?>
-<?php include "function.php";?>
+<?php include "pagecomponents/maintopnav.php";?>
+<?php include "../function.php";?>
 
 
 
@@ -104,7 +103,7 @@
 
   <!-- Control Sidebar -->
   <?php
-  include "components/mainfooter.php";
+  include "pagecomponents/mainfooter.php";
   ?>
 
 

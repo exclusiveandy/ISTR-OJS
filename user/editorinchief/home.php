@@ -1,4 +1,4 @@
-<?php include "../usercomponents/usernav.php" ; ?>
+<?php include "usernav.php" ; ?>
   
 
   <div class="content-wrapper">

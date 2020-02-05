@@ -1,139 +1,266 @@
-<?php include("../usercomponents/usernav.php"); 
-validate();
-if(isset($_GET['id']))
-{
-  $query = query("SELECT user_id, user_fname, user_mname, user_lname, user_contact, user_address, user_affliation, user_bio, user_email, user_password, user_role_name, user_salutation FROM user_table u3  join user_role_table u2 on u3.user_role_id=u2.user_role_id WHERE user_id = '{$_GET['id']}' ");
-  confirm($query);
-  while($row = fetch_assoc($query))
-  {
+<?php include("usernav.php"); 
 
 ?>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
+    <div class="content-header">
+      <div class="container">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1><?php echo $row['user_role_name'];?></h1>
-          </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">
+            <h1 class="m-0 text-dark" style="font-size: 20pt; ">Author's Profile</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Document</li>
+              <li class="breadcrumb-item active">Profile</li>
             </ol>
-          </div>
-        </div>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </section>
+    </div>
 
     <!-- Main content -->
-    <section class="content">
+    <div class="content">
+      <div class="container">
 
-      <!-- Default box -->
-      <!-- /.card-header -->
-        <section class="content">
-          <div class="container-fluid">
-           
-    
-                <!-- Profile Image -->
-    
-                <!-- About Me Box -->
-               
-              
-              <!-- /.col -->
-            
-                <div class="card">
-                 
+        <div class="card">
+          <div class="card-header">
+            <h1 class="card-title">Update Profile</h1>
+          </div>          
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="card card-info">
+                  <div class="card-header">
+                    <h1 class="card-title">Author's Info</h1>
+                  </div>  
                   <div class="card-body">
-                    <div class="tab-content">
-                      
-    
-                      <div class="active tab-pane" id="settings">
-                        <form class="form-horizontal">
-                        <span id="result"></span>
 
-                            <div class="form-group">
-                              <label for="exampleInputEmail1">Salutation</label>
-                              <input type="text" class="form-control" id="salutation" name="salutation" placeholder="Mr/Mrs.Go" value="<?php echo $row['user_salutation'];?>">
-                               <span id="error_salu" class="text-danger"></span>
-
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Firstname</label>
-                              <input type="text" class="form-control" id="fname" name="fname" placeholder="Your First Name" value="<?php echo $row['user_fname'];?>">
-                             <span id="error_fname" class="text-danger"></span>
-
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Middlename</label>
-                              <input type="text" class="form-control" id="mname" name="mname" placeholder="Your Middle Name" value="<?php echo $row['user_mname'];?>">
-                              <span id="error_mname" class="text-danger"></span>
-
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Lastname</label>
-                              <input type="text" class="form-control" id="lname" name="lname" placeholder="Your Last Name" value="<?php echo $row['user_lname'];?>">
-                            <span id="error_lname" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Contact</label>
-                              <input type="text" class="form-control" id="contact" name="contact" placeholder="09*******" value="<?php echo $row['user_contact'];?>">
-                              <span id="error_contact" class="text-danger"></span>
-  
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Mailing Address</label>
-                              <input type="text" class="form-control" id="maddress" name="maddress" placeholder="Mailing Adress" value="<?php echo $row['user_address'];?>">
-                                                     <span id="error_mailaddress" class="text-danger"></span>
-
-                            </div>
-                            
-                              <div class="form-group">
-                                <label for="exampleInputPassword1">Affiliations</label>
-                                <input type="text" class="form-control" id="affli" name="affli" placeholder="Affliation" value="<?php echo $row['user_affliation'];?>">
-                             <span id="error_affliation" class="text-danger"></span>
-
-
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputPassword1">Bio Statement</label>
-                                <textarea class="form-control" rows="3" placeholder="..." value="" name="bio" id="bio"><?php echo $row['user_bio'];?></textarea>
-                             <span id="error_biostatement" class="text-danger"></span>
-
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                  <button type="submit" class="btn btn-success" id="update">Update</button>
-                                </div>
-                            </div>
-
-
-
-                            <br>
-                            <hr>
-                            <br>
-                        </form>
-                        <?php
-                          }
-                        }
-                        ?>
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="font-weight:500;">Firstname</label>
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name">
+                            <span id="error_fname" class="text-danger"></span>
+                        </div>                               
                       </div>
-                      <!-- /.tab-pane -->
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="font-weight:500;">Middlename</label>
+                            <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name">
+                            <span id="error_mname" class="text-danger"></span>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="font-weight:500;">Lastname</label>
+                            <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name">
+                            <span id="error_lname" class="text-danger"></span>
+                        </div>
+                      </div>
                     </div>
-                    <!-- /.tab-content -->
-                  </div><!-- /.card-body -->
-                </div>
-                <!-- /.nav-tabs-custom -->
-          
-          
-          </div><!-- /.container-fluid -->
-        </section>
 
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="font-weight:500;">Contact</label>
+                            <input type="text" class="form-control" id="contact" name="contact" placeholder="09********" onkeyup="this.value=this.value.replace(/[^0-9]/g, '')" maxlength="12">
+                            <span id="error_contact" class="text-danger"></span>
+                        </div>                              
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="font-weight:500;">Mailing Address</label>
+                            <input type="text" class="form-control" id="maddress" name="maddress" placeholder="Mailing Address">
+                            <span id="error_mailaddress" class="text-danger"></span>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="font-weight:500;" >Gender</label>
+                            <br>
+                            <input type="radio" id="gender" name="gender" checked value="Male">
+                            Male        
+                            <input type="radio" id="gender" name="gender" value="Female">
+                            Female           
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1" style="font-weight:500;">Salutation</label>
+                          <input type="text" class="form-control" id="salutation" name="salutation" placeholder="Mr/Mrs.Go" maxlength="3">
+                          <span id="error_salu" class="text-danger"></span>
+                        </div>                               
+                      </div>
+                      
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="font-weight:500;">Affiliation</label>
+                            <input type="text" class="form-control" id="affli" name="affli" placeholder="Affliation">
+                            <span id="error_affliation" class="text-danger"></span>
+                        </div>                                
+                      </div>
+                      
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="font-weight:500;">Field of Expertise</label>
+                            <select class="form-control" id="expert" name="expert">
+                              <option value="" selected disabled>Select your Research Expertise</option>
+                              <?php 
+                                  $research_field_query = query("SELECT * from user_research_field ORDER by research_field_name ASC");
+                                  
+                                  confirm($research_field_query);
+                                  while($row = fetch_assoc($research_field_query))
+                                  {
+                                  ?>
+                              <option value="<?php echo $row['research_field_name'];?>"><?php echo $row['research_field_name'];?></option>
+                              <?php
+                                  }
+                                  ?>
+                              <option value="Others">Others</option>
+                            </select>
+                            <span id="error_expert" class="text-danger"></span>
+                        </div>
+                        
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group" id="Other_research_Field" hidden>
+                            <label for="exampleInputPassword1" style="font-weight:500;">Your Research Field</label>
+                            <input type="text" class="form-control" name="Add_Research_Field" id="Add_Research_Field" placeholder="Add Research Field">
+                            <span id="error_add_research_field" class="text-danger"></span>
+                        </div>
+                      </div>
+                    </div>
+                         
+                            <div class="form-group">
+                              <label for="exampleInputPassword1" style="font-weight:500;">Bio Statement</label>
+                              <textarea class="form-control" rows="3" placeholder="..." name="bio" id="bio"></textarea>
+                              <span id="error_biostatement" class="text-danger"></span>
+                            </div>
+
+
+                            
+                              
+
+                  </div>
+                  <div class="card-footer">
+
+                  <div id="loader" style="display: none; text-align: center;">
+                                      
+                    <img src="../img/loading1.gif" width="50px" height="50px">
+                    <p>Please wait for a moment!</p>
+                    <br>
+                  </div>
+                  <button style="width: 100%;" type="submit" class="btn btn-success" name="submit" id="submit">Update Info</button>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-lg-5">
+                  
+                  <div class="card card-info">
+                     <div class="card-header">
+                        <h3 class="card-title">Login Info</h3>
+                     </div>
+                     <!-- /.card-header -->
+                     <!-- form start -->
+                     <form role="form">
+                        <div class="card-body">
+                           <div class="form-group">
+                              <label for="exampleInputPassword1" style="font-weight:500;">Email Address</label>
+                              <input disabled type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                              <span id="error_email" class="text-danger"></span>
+                              <span id="error_journal" class="text-danger"></span>
+                           </div>
+                           <hr>
+                          
+                           <div class="form-group">
+                              <label for="exampleInputPassword1" style="font-weight:500;">Current Password</label>
+                              <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                              <span id="error_password" class="text-danger"></span>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputPassword1" style="font-weight:500;">New Password</label>
+                              <input type="password" class="form-control" id="cpass" name="cpass" placeholder="Confirm Password">
+                              <span id="check"></span>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputPassword1" style="font-weight:500;">Confirm New Password</label>
+                              <input type="password" class="form-control" id="cpass" name="cpass" placeholder="Confirm Password">
+                              <span id="check"></span>
+                           </div>
+                        </div>                        <!-- /.card-body -->
+                        <div class="card-footer">
+
+                        <div id="loader" style="display: none; text-align: center;">
+                                            
+                          <img src="../img/loading1.gif" width="50px" height="50px">
+                          <p>Please wait for a moment!</p>
+                          <br>
+                        </div>
+                        <button style="width: 100%;" type="submit" class="btn btn-success" name="submit" id="submit">Change Password</button>
+
+                        </div>
+                      
+                       
+                     </form>
+                  </div>
+               </div>
+
+            </div>
+
+
+        
+
+          </div>
+
+        
+
+        </div>
+
+
+        <div class="content-header">
+            <div class="container">
+               <div class="row mb-2">
+                  <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">           
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">
+                     <ol class="breadcrumb float-sm-right">            
+                     </ol>
+                  </div>
+                  <!-- /.col -->
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+         </div>
+      
+
+          
+      
+      
+        
+
+       
+      </div><!-- /.container-fluid -->
+    </div> <!-- /.content -->
+
+
+
+  </div>    <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">

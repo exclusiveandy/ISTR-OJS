@@ -1,11 +1,14 @@
 <?php 
 include("database/connection.php");
 require("vendor/autoload.php");
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 use Intervention\Image\ImageManagerStatic as Image;
 
 require_once 'vendor/phpoffice/phpword/bootstrap.php';
+
 ob_start();
 session_start();    
 function redirect($location){
@@ -153,7 +156,7 @@ function password_reset(){
 
 function send_email($email, $subject, $msg){
 // Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer(true);
+    $mail = new PHPMailer(true);
 
 
     //Server settings
@@ -164,7 +167,8 @@ $mail = new PHPMailer(true);
     $mail->Username   = 'ojs.pup@gmail.com';                     // SMTP username
     $mail->Password   = 'pupojs2019';                               // SMTP password
     $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
-    $mail->Port       = 587;           
+    $mail->Port       = 587;   
+            
     $mail->SMTPOptions = array(
                     'ssl' => array(
                         'verify_peer' => false,
@@ -174,7 +178,8 @@ $mail = new PHPMailer(true);
                 );                         // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('ojs.pup@gmail.com', 'PUP');
+    $mail->AddReplyTo( 'ojs.pup@gmail.com', 'Contact ISTR' );
+    $mail->setFrom('ojs.pup@gmail.com', 'Institute of Science and Research Technology - PUP ');
     $mail->addAddress($email);     // Add a recipient
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
@@ -184,7 +189,7 @@ $mail = new PHPMailer(true);
     $mail->send();
   
 
-// return mail($email, $subject, $msg, $headers);
+//return mail($email, $subject, $msg);
 
 
 }
@@ -354,48 +359,7 @@ END;
 echo $error_message;
 }
 
-function register_user()
-{
-    if(isset($_POST['submit']))
-    {
-       
-       $fname = escape_string($_POST['fname']);
-       $mname = escape_string($_POST['mname']);
-       $lname = escape_string($_POST['lname']);
-       $email = escape_string($_POST['email']);
-       $password = escape_string($_POST['password']);
-       if((!empty($fname) && !empty($mname) && !empty($lname) && !empty($email) && !empty($password)) && (!($fname = " ")) && (!($mname = "")) && (!($lname = ""))) 
-       {
-            $query = query("SELECT * from user_table where user_email = '{$email}' ");
-            confirm($query);
-            if(mysqli_num_rows($query)==1)
-            {
-                $span =<<<END
-                <span>Email has already been used</span>
-END;
-                echo $span;
-            }
-            else
-            {
-                $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12) );
-                $query = "INSERT INTO user_table (user_fname, user_mname, user_lname, user_bday, user_email, user_password, user_role_id) ";
-                $query .= "Values('{$fname}', '{$mname}', '{$lname}', '{$email}', '{$password}', '1')" ;
-                $register_user_query = query($query);
-                confirm($register_user_query);
-                redirect("Login.php");
-                
-            } 
-        }
-       else
-       {
-        $span =<<<END
-        <span>Empty Fields</span>
-END;
-        echo $span;
-       }
-   
-    }
-}
+
 function login()
 {
     if(isset($_POST['login']))

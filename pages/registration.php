@@ -14,6 +14,7 @@ include "../function.php";
        $expert = escape_string($_POST['expert']);
        $gender = escape_string($_POST['gender']);
        $salutation = escape_string($_POST['salutation']);
+
        if((!empty($fname) &&  !empty($lname) && !empty($email) && !empty($password) && !empty($password) && !empty($password)) && !ctype_space($fname) && !ctype_space($lname) && !ctype_space($email) && !ctype_space($password) && filter_var($email, FILTER_VALIDATE_EMAIL)) 
        {
             $query = query("SELECT * from user_table where user_email = '{$email}'");
@@ -30,14 +31,44 @@ include "../function.php";
                 $query = "INSERT INTO user_table (user_fname, user_mname, user_lname, user_email, user_password, user_role_id, user_contact, user_address, user_affliation, user_bio, expertise, gender, user_salutation) ";
                 $query .= "Values('{$fname}', '{$mname}', '{$lname}', '{$email}', '{$password}', '1', '{$contact}', '{$address}', '{$affli}', '{$bio}', '{$expert}', '{$gender}', '{$salutation}')" ;
                 $register_user_query = query($query);
-                confirm($register_user_query);
-                set_message("<p class='text-center'>Thank for your registration.<br></p><p>Please check your email or spam folder for activation link</p>");
-                $subject = "Acitvate Account";
-                $msg = "Hello thank you for registering in Polytechnic University Of the Philippines. For your account activation kindly click the link
-                <a href=\"http://localhost/istr-ojs/pages/activate.php?email=$email\">Link Here</a>";
+               
+                set_message("
+                <p class='text-center'>
+                    Thank you for your registration.                
+                </p>
+                <br>
+                <p>Please check your email or spam folder for activation link</p>
+                
+                ");
+
+
+                $subject = "Activate Account";
+                $msg = "
+
+                <div style='width: 100%; height: 600px; text-align: center;'>
+                <div style='width: 100%; height: 200px; background-color: grey;'> 
+				<img style='margin-top: 30px;' src='https://user-images.githubusercontent.com/48126750/73815958-68a5b680-4822-11ea-9ed9-e6a15c4f2603.png'/>
+                </div> 
+                <br>
+
+                <h1>Thank you for registering in ISTR-OJS.</h1> 
+
+                For your account activation kindly click the button.
+                <br><br><br><br>
+                <a style='text-decoration: none; border-radius: 30px; padding: 15px 32px; width:220px; height: 80px; text-align: center; background-color: #800000; color: white;' href=\"http://localhost/istr-ojs/pages/activate.php?email=$email\">Activate Account</a>
+                
+				<br><br><br><br>
+				<div style='width: 100%; height: 200px; background-color: grey;'> 
+                </div> 
+                </div> ";
+
                 $name = $lname.", ".$mname.", ".$fname;
+                              
                 send_email($email, $subject, $msg);
+                confirm($register_user_query);  
+
                 $response['status'] = "register_guide.php";
+
                 echo json_encode($response);
                 
             } 

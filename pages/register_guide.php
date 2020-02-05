@@ -1,4 +1,4 @@
-<?php include "header.php";?>
+<?php include "pagecomponents/maintopnav.php";?>
 <?php include "../function.php";?>
 
   

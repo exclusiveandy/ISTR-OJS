@@ -12,6 +12,8 @@
   
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
 </head>
 
 <body class="hold-transition layout-top-nav">
@@ -169,8 +171,8 @@ $row_journal = fetch_assoc($journal_query);
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <a href="journal_view.php?id=<?php echo $row_journal['journal_id'];?>" type="button" class="btn btn-primary">View</a>
-                                <a href="archieves.php?id=<?php echo $row_journal['journal_id'];?>" type="button" class="btn btn-primary">Archives</a>
+                                <a href="pages/journal_view.php?id=<?php echo $row_journal['journal_id'];?>" type="button" class="btn btn-primary">View</a>
+                                <a href="pages/archieves.php?id=<?php echo $row_journal['journal_id'];?>" type="button" class="btn btn-primary">Archives</a>
                             </div>
                             <!-- /.card-footer-->
                         </div>
@@ -219,7 +221,7 @@ $row_announcement = fetch_assoc($Announcement_query);
                                 <p class="card-text " style="overflow: hidden; white-space: normal; text-overflow: ellipsis; height: 115px;">
                                     <?php echo $row_announcement['announcement_description'];?>
                                 </p>
-                                <a href="announcements.php" class="card-link">View</a>
+                                <a href="pages/announcements.php" class="card-link">View</a>
                             </div>
                         </div>
 
@@ -294,8 +296,8 @@ $row_announcement = fetch_assoc($Announcement_query);
 <!-- FastClick -->
 <script src="plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="js/demo.js"></script>
 </body>
 </html>

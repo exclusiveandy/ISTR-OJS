@@ -45,4 +45,4 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 2. Do not edit ``master`` branch
 3. Only exclusiveandy can merge pull request
 4. Edit [Breakdown](https://docs.google.com/spreadsheets/d/1WkSNf1Zm0ZxA4RX-jtSj3knE8BARPY8w/edit#gid=662191561) on every issue fix
-
+5. See [User Access](https://github.com/exclusiveandy/ISTR-OJS/blob/master/README.md)

@@ -26,4 +26,4 @@
     * password - 123456
 9. ADMIN
     * username - admin@gmail.com
-    * password - admin
+    * password - 123456

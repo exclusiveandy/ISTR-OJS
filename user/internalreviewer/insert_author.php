@@ -1,5 +1,5 @@
 <?php
- include "../../../function.php"; 
+ include "../../function.php"; 
 if(!empty($_POST))
 {
 	$author_first_name = escape_string($_POST['first_name']);

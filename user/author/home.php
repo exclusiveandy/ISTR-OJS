@@ -1,4 +1,4 @@
-<?php include("../usercomponents/usernav.php");?>
+<?php include("usernav.php");?>
   
 
   <div class="content-wrapper">
@@ -276,19 +276,7 @@ $data_user_count = trim($data_user_count, ",");
 
       </section>
 
-      <div class="content-header">
-      <div class="container">
-        <div class="row mb-2">
-          <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">           
-          </div><!-- /.col -->
-          <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">
-            <ol class="breadcrumb float-sm-right">            
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-
+    
 
        
       </div><!-- /.container-fluid -->
@@ -300,7 +288,18 @@ $data_user_count = trim($data_user_count, ",");
   <!-- /.content-wrapper -->
 
 
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.0-beta.1
+    </div>
+    <strong>Copyright &copy; 2014-2018 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
 
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
 
 
 

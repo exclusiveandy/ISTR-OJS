@@ -1,4 +1,4 @@
-<?php include "usernav.php" ; 
+<?php include("usernav.php"); 
 validate();
 if(isset($_GET['id']))
 {
@@ -10,8 +10,8 @@ if(isset($_GET['id']))
 ?>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
+    <div class="content-header">
+      <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1><?php echo $row['user_role_name'];?></h1>
@@ -24,25 +24,17 @@ if(isset($_GET['id']))
           </div>
         </div>
       </div><!-- /.container-fluid -->
-    </section>
+    </div>
 
     <!-- Main content -->
-    <section class="content">
+    <div class="content">
 
       <!-- Default box -->
       <!-- /.card-header -->
-        <section class="content">
-          <div class="container-fluid">
+        <div class="content">
+          <section class="content">
            
-    
-                <!-- Profile Image -->
-    
-                <!-- About Me Box -->
-               
-              
-              <!-- /.col -->
-            
-                <div class="card">
+                    <div class="card">
                  
                   <div class="card-body">
                     <div class="tab-content">
@@ -130,7 +122,7 @@ if(isset($_GET['id']))
           </div><!-- /.container-fluid -->
         </section>
 
-    </section>
+    </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

@@ -30,6 +30,7 @@ This system is exclusive for the said institute, ISTR that asides in [**_Polytec
 * Install the xampp v.3.2.4 server on your PC
 * Create a folder in htdocs, name it istr
 * Place the downloaded repository inside the created folder istr in htdocs in xampp destination folder
+* Edit the connection host and password for your localhost in connection.php
 * Start Apache and MySQL of xampp
 * Import the sql file in the PHPmyAdmin server
 * Run the application through http://localhost/istr/index.php

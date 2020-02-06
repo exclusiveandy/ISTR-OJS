@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <?php include "../../function.php"; 
 validate();?>
@@ -10,22 +11,13 @@ validate();?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
-  
-
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap4.css">
  
   <!-- Theme style -->
   <link rel="stylesheet" href="../../css/adminlte.min.css">
-
-    <link rel="stylesheet" href="../../css/track.css">
-
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -52,7 +44,8 @@ validate();?>
       <!-- Messages Dropdown Menu -->
       
       <!-- Notifications Dropdown Menu -->
-          <li class="nav-item dropdown">
+
+           <li class="nav-item dropdown">
            
        <input type="hidden" id="user_id" value="<?php echo $_SESSION['id'];?>">
         <a class="nav-link" data-toggle="dropdown" id="bell" href="#">
@@ -92,9 +85,55 @@ validate();?>
 
                 <a href="calendar.php" class="dropdown-item">
                   <i class="fas fa-calendar-alt"></i>
+
                   <?php
                 }
-                else if($result['notification_type'] == "publish")
+                 else if($result['notification_type'] == "review_eic")
+                    {
+                  ?> 
+
+                <a href="view_document.php?r_id=<?php echo $result['research_id']?>" class="dropdown-item">
+                    <i class="nav-icon fas fa-file"></i>
+                  
+                  <?php
+                }
+                    else if($result['notification_type'] == "for_me")
+                    {
+                  ?> 
+
+                <a href="docview_send_to_me.php?r_id=<?php echo $result['research_id']?>" class="dropdown-item">
+                    <i class="nav-icon fas fa-file"></i>
+                  
+                  <?php
+                }
+                    else if($result['notification_type'] == "assign_IR")
+                    {
+                  ?> 
+
+                <a href="assign_internal_reviewer.php?r_id=<?php echo $result['research_id']?>" class="dropdown-item">
+                    <i class="nav-icon fas fa-file"></i>
+                  
+                  <?php
+                }
+                    else if($result['notification_type'] == "assign_ER")
+                    {
+                  ?> 
+
+                <a href="assign_external_reviewer.php?r_id=<?php echo $result['research_id']?>" class="dropdown-item">
+                    <i class="nav-icon fas fa-file"></i>
+                  
+                  <?php
+                }
+                else if($result['notification_type'] == "for_PO")
+                {
+
+                  ?>
+                   <a href="docview_send_to_po.php?r_id=<?php echo $result['research_id']?>" class="dropdown-item">
+                    <i class="nav-icon fas fa-file"></i>
+                <?php
+                }
+
+                else
                 {
 
                   ?>
@@ -102,37 +141,8 @@ validate();?>
                     <i class="nav-icon fas fa-file"></i>
                 <?php
                 }
-                 else if($result['notification_type'] == "rejected")
-                {
+                ?>
 
-                  ?>
-                   <a href="view_document.php?r_id=<?php echo $result['research_id']?>" class="dropdown-item">
-                    <i class="nav-icon fas fa-file"></i>
-                <?php
-                }
-                 else if($result['notification_type'] == "revision_author")
-                {
-                ?>
-                <a href="document_revision.php?r_id=<?php echo $result['research_id']?>" class="dropdown-item">
-                    <i class="nav-icon fas fa-file"></i>
-                <?php
-              }
-
-                else if($result['notification_type'] == "author_consent")
-                {
-                ?>
-                <a href="view_layout_document.php?r_id=<?php echo $result['research_id']?>" class="dropdown-item">
-                    <i class="nav-icon fas fa-file"></i>
-                <?php
-              }
-                else 
-                {
-                ?>
-                <a href="#" class="dropdown-item">
-                    <i class="nav-icon fas fa-file"></i>
-                <?php
-              }
-              ?>
                 <p>
                 <?php echo $result['message'] ;?>
                 <span class="float-right text-muted text-sm">
@@ -167,10 +177,13 @@ validate();?>
            
         </a>
       </li>
-
+          
+           
+        </a>
+      </li>
       <li class="nav-item">
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../pages/logout.php" class="nav-link">Logout</a>
+          <a href="../../logout.php" class="nav-link">Logout</a>
         </li>
       </li>
     </ul>
@@ -178,9 +191,9 @@ validate();?>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="overflow: auto;">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="../../index.php" class="brand-link">
       <img src="../../img/istrlogo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">ISTR-OJS</span>
     </a>
@@ -202,29 +215,29 @@ validate();?>
                with font-awesome or any other icon font library -->
           
           
-          <li class="nav-item">
-            <a href="submit.php" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>Submit Document</p>
-            </a>
-          </li>
-               
-  <?php 
-  $user = $_SESSION['id'];
-      $count_query = query("SELECT COUNT(research_id) as count
-        FROM `research_table`as r 
-        where user_id = '{$_SESSION['id']}' AND user_role_id = '1' AND status IN (\"Accepted with Revisions\", \"To the Author for Consent\") order by research_id asc");
-      $row_count = fetch_assoc($count_query);
-     ?>
 
+               
+           <?php 
+    $journal_id = $_SESSION['journal_id'];
+    $count_query = query("SELECT COUNT(research_id) as count
+     FROM `research_table`as r 
+     where user_role_id = '3' and r.journal_id='{$journal_id}' order by research_id asc");
+       $count_pullout_query = query("SELECT COUNT(r.research_id) as count
+     FROM `research_table`as r join reviewer_table r2 on r.research_id=r2.research_id  
+     where (user_role_id = '4' or user_role_id = '5') and r.journal_id='{$journal_id}' and  DATEDIFF(date_expired, date_uploaded) <= 0 order by r.research_id asc");
+       $row_count2 = fetch_assoc($count_pullout_query);
+      $row_count = fetch_assoc($count_query);
+      $row_count['count'] = $row_count['count'] + $row_count2['count'];
+
+     ?>
           <li class="nav-header">LISTS</li>
 
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Documents
-                   <?php
+                     <?php
                     if($row_count['count'] != 0)
                     {
                     ?>
@@ -235,109 +248,171 @@ validate();?>
                 <i class="fas fa-angle-left right"></i>                
               </p>
             </a>
-             <?php
-    $count_revision_query = query("SELECT COUNT(research_id) as count
+             <ul class="nav nav-treeview">
+              <?php
+    $count_review_query = query("SELECT COUNT(research_id) as count
      FROM `research_table`as r 
-     where user_role_id = '1' and user_id = '{$user}' and status = \"Accepted with Revisions\" order by research_id asc");
-      $row_revision_count = fetch_assoc($count_revision_query);
+     where user_role_id = '3' and r.journal_id='{$journal_id}' and status = \"On Editor in Chief\" order by research_id asc");
+      $row_review_count = fetch_assoc($count_review_query);
      ?>
-            <ul class="nav nav-treeview">
+       
               <li class="nav-item">
-                <a href="for_revision.php" class="nav-link">
-                 <i class="fas fa-edit"></i>
-                  <p>For Revision
-                       <?php
-                    if($row_revision_count['count'] != 0)
-                    {
-                    ?>
-                    <span class="badge badge-danger navbar-badge" style="font-size: 13px"><?php echo $row_revision_count['count'];?></span> 
-                    <?php
-                    }
-                  ?></p>
-                </a>
-              </li>
-                <?php
-    $count_consent_query = query("SELECT COUNT(research_id) as count
-     FROM `research_table`as r 
-     where user_role_id = '1' and user_id = '{$user}' and status = \"To the Author for Consent\" order by research_id asc");
-      $row_consent_count = fetch_assoc($count_consent_query);
-     ?>
-              <li class="nav-item">
-                <a href="for_author_consent.php" class="nav-link">
-                  <i class="fas fa-check"></i>
-                 <p>For Author Consent
+                <a href="for_review.php" class="nav-link">
+                 <i class="fas fa-barcode"></i>
+                  <p>For Review
                   <?php
-                    if($row_consent_count['count'] != 0)
+                    if($row_review_count['count'] != 0)
                     {
                     ?>
-                    <span class="badge badge-danger navbar-badge" style="font-size: 13px"><?php echo $row_consent_count['count'];?></span> 
+                    <span class="badge badge-danger navbar-badge" style="font-size: 13px"><?php echo $row_review_count['count'];?></span> 
                     <?php
                     }
-                  ?></p>
+                  ?>
+
+                </p>
                 </a>
               </li>
-               <?php
-    $count_ongoing_query = query("SELECT COUNT(research_id) as count
+
+    <?php
+    $count_author_query = query("SELECT COUNT(research_id) as count
      FROM `research_table`as r 
-     where user_id = '{$user}' and status NOT IN  (\"Accepted with Revisions\", \"To the Author for Consent\", \"Rejected\", \"Published\") order by research_id asc");
-      $row_ongoing_count = fetch_assoc($count_ongoing_query);
+     where user_role_id = '3' and r.journal_id='{$journal_id}' and (status = \"Rejected\" OR status = \"Accepted with Revisions\" OR status = \"To the Author for Consent\") order by research_id asc");
+      $row_author_count = fetch_assoc($count_author_query);
      ?>
               <li class="nav-item">
-                <a href="on_going_documents.php" class="nav-link">
-                  <i class="fas fa-spinner"></i>
-                  <p>On Going Documents<?php
-                    if($row_ongoing_count['count'] != 0)
+                <a href="for_ME.php" class="nav-link">
+                   <i class="fa fa-paper-plane"></i>
+                  <p>For Managing Editor
+                    <?php
+                    if($row_author_count['count'] != 0)
                     {
                     ?>
-                    <span class="badge badge-secondary navbar-badge" style="font-size: 13px"><?php echo $row_ongoing_count['count'];?></span> 
+                    <span class="badge badge-danger navbar-badge" style="font-size: 13px"><?php echo $row_author_count['count'];?>
+                    </span> 
                     <?php
                     }
                   ?></p>
                 </a>
               </li>
-                          
+
+
+                   <?php
+    $count_EIC_query = query("SELECT COUNT(research_id) as count
+     FROM `research_table`as r 
+     where user_role_id = '3' and r.journal_id='{$journal_id}' and (status = \"Issue of Volume\" OR status = \"To the Proofreader\" OR status = \"To the Layout Editor\" OR status = \"Assigning of Volume and Issue\" or status = \"For Publication Office\") order by research_id asc");
+      $row_EIC_count = fetch_assoc($count_EIC_query);
+     ?>
+              <li class="nav-item">
+                <a href="for_PO.php" class="nav-link">
+                   <i class="fa fa-paper-plane"></i>
+                  <p>For Publication Office
+                    <?php
+                    if($row_EIC_count['count'] != 0)
+                    {
+                    ?>
+                    <span class="badge badge-danger navbar-badge" style="font-size: 13px"><?php echo $row_EIC_count['count'];?>
+
+                    </span> 
+                    <?php
+                    }
+                  ?>
+                </p>
+                </a>
+              </li>
+
+              <?php
+    $count_external_query = query("SELECT COUNT(research_id) as count
+     FROM `research_table`as r 
+     where user_role_id = '3' and r.journal_id='{$journal_id}' and (status = \"Assign an External Reviewer\") order by research_id asc");
+      $row_external_count = fetch_assoc($count_external_query);
+     ?>
+               <li class="nav-item">
+                <a href="for_external_reviewer.php" class="nav-link">
+                <i class="fas fa-user"></i>
+                  <p>Assign External Reviewer
+                   <?php
+                    if($row_external_count['count'] != 0)
+                    {
+                    ?>
+                    <span class="badge badge-danger navbar-badge" style="font-size: 13px"><?php echo $row_external_count['count'];?>
+
+                    </span> 
+                    <?php
+                    }
+                  ?></p>
+                </a>
+              </li>
+                    
                      <?php
-    $count_rejected_query = query("SELECT COUNT(research_id) as count
+    $count_internal_query = query("SELECT COUNT(research_id) as count
      FROM `research_table`as r 
-     where user_id = '{$user}' and user_role_id = '1' and status = \"Rejected\"  order by research_id asc");
-      $row_rejected_count = fetch_assoc($count_rejected_query);
+     where user_role_id = '3' and r.journal_id='{$journal_id}' and (status = \"Assign an Internal Reviewer\") order by research_id asc");
+      $row_internal_count = fetch_assoc($count_internal_query);
      ?>
-              <li class="nav-item">
-                <a href="rejected_documents.php" class="nav-link">
-                <i class="fas fa-times"></i>
-                  <p>Rejected<?php
-                    if($row_rejected_count['count'] != 0)
+               <li class="nav-item">
+                <a href="for_internal_reviewer.php" class="nav-link">
+                <i class="fas fa-user"></i>
+                  <p>Assign Internal Reviewer
+                   <?php
+                    if($row_internal_count['count'] != 0)
                     {
                     ?>
-                    <span class="badge badge-warning navbar-badge" style="font-size: 13px"><?php echo $row_rejected_count['count'];?></span> 
+                    <span class="badge badge-danger navbar-badge" style="font-size: 13px"><?php echo $row_internal_count['count'];?>
+
+                    </span> 
                     <?php
                     }
                   ?></p>
                 </a>
               </li>
+                    
+               <?php
 
+    $count_pullout_query = query("SELECT COUNT(r.research_id) as count
+     FROM `research_table`as r join reviewer_table r2 on r.research_id=r2.research_id  
+     where (user_role_id = '4' or user_role_id = '5') and r.journal_id='{$journal_id}' and  DATEDIFF(date_expired, date_uploaded) <= 0 order by r.research_id asc");
+      $row_pullout_count = fetch_assoc($count_pullout_query);
+     ?>
+               <li class="nav-item">
+                <a href="reviewer_documents.php" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i>
+                  <p>Pull out documents
+                   <?php
+                    if($row_pullout_count['count'] != 0)
+                    {
+                    ?>
+                    <span class="badge badge-danger navbar-badge" style="font-size: 13px"><?php echo $row_pullout_count['count'];?>
 
+                    </span> 
+                    <?php
+                    }
+                  ?></p>
+                </a>
+              </li>
+                    
+
+                            
             </ul>
           </li>          
-
           
+              
           <li class="nav-header">MISCELLANEOUS</li>
           <li class="nav-item">
             <a href="authors_guide.php" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>Author's Guide</p>
             </a>
-          </li>
+                </li>
 
-          <li class="nav-header">Actions</li>
-          <li class="nav-item">
-            <a href="apply_as_reviewer.php" class="nav-link">
+                 <li class="nav-header">Maintenance</li>
+                 <li class="nav-item">
+            <a href="open_volume.php" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
-              <p>Apply as a Reviewer</p>
+              <p>Open a Volume or Issue</p>
             </a>
-          </li>
-          
-             <li class="nav-header">Report</li>
+                </li>
+                
+         <li class="nav-header">Report</li>
           <li class="nav-item">
             <a href="reports.php" class="nav-link">
 <i class="fas fa-chart-bar"></i>              
@@ -347,11 +422,13 @@ validate();?>
                 <li class="nav-item">
             <a href="queries.php" class="nav-link">
 <i class="fas fa-chart-bar"></i>              
-<p>Queries</p>
+<p>Table</p>
             </a>
           </li>
+          
 
-        </ul>
+          
+        </ul> 
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -359,4 +436,15 @@ validate();?>
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

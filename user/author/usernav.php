@@ -23,8 +23,8 @@ validate();?>
  
   <!-- Theme style -->
   <link rel="stylesheet" href="../../css/adminlte.min.css">
-
-    <link rel="stylesheet" href="../../css/track.css">
+  <link rel="stylesheet" href="../../plugins/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="../../css/track.css">
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">

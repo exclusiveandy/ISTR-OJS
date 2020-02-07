@@ -7,6 +7,15 @@ use PHPMailer\PHPMailer\Exception;
 
 use Intervention\Image\ImageManagerStatic as Image;
 
+
+
+$cvfileurl = "C:/Users/APN-Guest-/Desktop/xamppnew/htdocs/ISTR-OJS/uploads/cv/";
+$originalfileurl = "C:/Users/APN-Guest-/Desktop/xamppnew/htdocs/ISTR-OJS/uploads/original/";
+$pdffileurl = "C:/Users/APN-Guest-/Desktop/xamppnew/htdocs/ISTR-OJS/uploads/pdf/";
+$plagiarismfileurl = "C:/Users/APN-Guest-/Desktop/xamppnew/htdocs/ISTR-OJS/uploads/plagiarism/";; 
+
+
+
 require_once 'vendor/phpoffice/phpword/bootstrap.php';
 
 ob_start();
@@ -245,16 +254,21 @@ function validate_pages($filetmpname)
 
 function pdf_conversion($file,$filename)
 {
-// if you are using composer, just use this
- $word = new COM("Word.Application") or die ("Could not initialise Object.");
+
+  $url_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+  chdir('../../uploads/original');   
+  
+  // if you are using composer, just use this
+  $word = new COM("Word.Application") or die ("Could not initialise Object.");
   // set it to 1 to see the MS Word window (the actual opening of the document)
   $word->Visible = 0;
   // recommend to set to 0, disables alerts like "Do you want MS Word to be the default .. etc"
   $word->DisplayAlerts = 0;
-  // open the word 2007-2013 document 
-  $word->Documents->Open("C:/xampp/htdocs/OJS/upload_original_file/{$file}");
+  // open the word 2007-2013 document    
+  $word->Documents->Open(getcwd()."/{$file}"); //localhost   //dirname($url_link)."/uploads/original/{$file}.docx"  
   // convert word 2007-2013 to PDF
-  $word->ActiveDocument->ExportAsFixedFormat("C:/xampp/htdocs/OJS/upload_pdf_file/{$filename}.pdf", 17, false, 0, 0, 0, 0, 7, true, true, 2, true, true, false);
+  $word->ActiveDocument->ExportAsFixedFormat(getcwd()."/{$filename}.pdf", 17, false, 0, 0, 0, 0, 7, true, true, 2, true, true, false);
   // quit the Word process
   $word->Documents->Close(false);
   $word->Quit(false);
@@ -266,16 +280,19 @@ function pdf_conversion($file,$filename)
 
 function pdf_conversion2($file,$filename)
 {
-// if you are using composer, just use this
- $word = new COM("Word.Application") or die ("Could not initialise Object.");
+
+  chdir('../../uploads/original');  
+  // if you are using composer, just use this
+  $word = new COM("Word.Application") or die ("Could not initialise Object.");
   // set it to 1 to see the MS Word window (the actual opening of the document)
   $word->Visible = 0;
   // recommend to set to 0, disables alerts like "Do you want MS Word to be the default .. etc"
   $word->DisplayAlerts = 0;
   // open the word 2007-2013 document 
-  $word->Documents->Open("C:/xampp/htdocs/OJS/upload_cv_file/{$file}");
+  $word->Documents->Open(getcwd()."/{$file}"); //localhost
   // convert word 2007-2013 to PDF
-  $word->ActiveDocument->ExportAsFixedFormat("C:/xampp/htdocs/OJS/upload_pdf_file/{$filename}.pdf", 17, false, 0, 0, 0, 0, 7, true, true, 2, true, true, false);
+  chdir('../uploads/pdf');
+  $word->ActiveDocument->ExportAsFixedFormat(getcwd()."/{$filename}.pdf", 17, false, 0, 0, 0, 0, 7, true, true, 2, true, true, false);
   // quit the Word process
   $word->Documents->Close(false);
   $word->Quit(false);

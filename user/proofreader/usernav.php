@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include "../../../function.php"; 
+<?php include "../../function.php"; 
 validate();?>
 <html>
 <head>
@@ -142,7 +142,7 @@ validate();?>
 
       <li class="nav-item">
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../logout.php" class="nav-link">Logout</a>
+          <a href="logout.php" class="nav-link">Logout</a>
         </li>
       </li>
     </ul>

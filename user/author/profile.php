@@ -93,7 +93,7 @@ if(isset($_GET['id']))
                     <hr>
 
                     <div class="row">
-                      <div class="col-lg-6">
+                      <div class="col-lg-3">
                         <div class="form-group">
                           <label for="exampleInputEmail1" style="font-weight:500;">Salutation</label>
                           <input type="text" class="form-control" id="salutation" name="salutation" value="<?php echo $row['user_salutation'];?>" placeholder="Mr/Mrs.Go" maxlength="3">
@@ -101,7 +101,7 @@ if(isset($_GET['id']))
                         </div>                               
                       </div>
                       
-                      <div class="col-lg-6">
+                      <div class="col-lg-9">
                         <div class="form-group">
                             <label for="exampleInputPassword1" style="font-weight:500;">Affiliation</label>
                             <input type="text" class="form-control" id="affli" name="affli" value="<?php echo $row['user_affliation'];?>" placeholder="Affliation">
@@ -170,6 +170,9 @@ if(isset($_GET['id']))
                               <input type="password" class="form-control" id="currentpassword" name="currentpassword" placeholder="Password">
                               <span id="error_currentpassword" class="text-danger"></span>
                            </div>
+
+                           <hr>
+
                            <div class="form-group">
                               <label for="exampleInputPassword1" style="font-weight:500;">New Password</label>
                               <input type="password" class="form-control" id="password" name="password" placeholder="Confirm Password">
@@ -493,7 +496,7 @@ $(document).ready(function()
                 $("#result").html(data);
                 Swal.fire({title: "Updated Succefully!", text: "Profile was updated", type: 
                 "success"}).then(function(){ 
-                  location.reload();
+                  location.href = 'home.php';
                   }
                 );
               }
@@ -557,9 +560,9 @@ $("#changepassword").click(function(event){
       $("#changepassword").removeAttr("hidden", "true");
       $("#loader2").hide();
 
-      Swal.fire({title: "Updated Succefully!", text: "Profile was updated", type: 
+      Swal.fire({title: "Password Changed Succefully!", text: "Profile was updated", type: 
       "success"}).then(function(){ 
-      
+        location.href = 'home.php';
         }
       );
     }

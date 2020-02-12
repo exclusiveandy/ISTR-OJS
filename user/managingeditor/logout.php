@@ -6,5 +6,5 @@ unset($_SESSION['id']);
 unset($_SESSION['email']); 
 unset($_SESSION['affi']);
   set_message("<div class=\"alert alert-primary\" role=\"alert\">Your account has been logout</div>");
-  redirect("../../login.php")
+  redirect("../../pages/login.php")
 ?>

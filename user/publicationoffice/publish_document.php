@@ -1,5 +1,5 @@
 <?php
-include "../../../function.php";
+include "../../function.php";
 if(isset($_POST['volume_id']))
 {
 	$volume_id = $_POST['volume_id'];

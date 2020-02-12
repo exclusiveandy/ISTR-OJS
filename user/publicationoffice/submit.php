@@ -1,6 +1,6 @@
 <!-- Navbar -->
   <?php
-    include "header.php";
+    include "usernav.php";
 validate();
   ?>
 

@@ -1,4 +1,4 @@
-<?php include("header.php");?>
+<?php include("usernav.php");?>
   
 <?php
 $v_id = $_GET['v_id'];

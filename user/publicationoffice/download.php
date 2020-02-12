@@ -1,5 +1,5 @@
 <?php
-include "../../../funciton.php";
+include "../../funciton.php";
 ob_clean();
 if(isset($_GET['path']))
 {

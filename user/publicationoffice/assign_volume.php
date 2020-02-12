@@ -1,5 +1,5 @@
 <?php
-include '../../../function.php';
+include '../../function.php';
 if(isset($_GET['v_id']) && isset($_GET['r_id']))
 {
 	$volume_id = escape_string($_GET['v_id']);

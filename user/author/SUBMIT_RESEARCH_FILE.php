@@ -142,7 +142,7 @@ include "../../function.php";
                     {
                     if(validate_pages($tmp_name)) 
                     {
-                        console.log("error on validating pages") ;                
+                        print_r("error on validating pages");               
                     }
                     else
                     {

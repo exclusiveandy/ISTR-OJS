@@ -6,5 +6,5 @@ unset($_SESSION['id']);
 unset($_SESSION['email']); 
 unset($_SESSION['affi']);
 set_message("<h6><p>Your account has been logout</p></h6>");
-redirect("../../login.php")
+redirect("../../pages/login.php")
 ?>

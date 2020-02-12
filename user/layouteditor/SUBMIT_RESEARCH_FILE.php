@@ -1,5 +1,5 @@
 <?php
-include "../../../function.php";
+include "../../function.php";
 
 
         if(isset($_FILES['file']['name']) && isset($_FILES['file2']['name']))

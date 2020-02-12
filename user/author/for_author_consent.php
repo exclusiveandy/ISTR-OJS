@@ -1,4 +1,4 @@
-<?php include("../usercomponents/usernav.php");
+<?php include("usernav.php");
 if(!isset($_SESSION['id']))
 {
 redirect('../../pages/login.php');

@@ -1,4 +1,4 @@
-<?php include "../../../function.php";
+<?php include "../../function.php";
 $fname = escape_string($_POST['fname']);
 $mname = escape_string($_POST['mname']);
 $lname = escape_string($_POST['lname']);

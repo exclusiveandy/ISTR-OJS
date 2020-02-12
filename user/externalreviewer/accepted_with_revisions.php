@@ -1,5 +1,5 @@
 <?php
-include "../../../function.php";
+include "../../function.php";
 	$id = escape_string($_POST['r_id']);
 	date_default_timezone_set('Asia/Manila');
     $date = date("Y-m-d H:i:s");

@@ -1,5 +1,5 @@
 <?php
-include "../../../function.php";
+include "../../function.php";
 $user_id = $_SESSION['id'];
 $sql = "SELECT title, r1.status, journal_name,  DATE_FORMAT(date_submitted, \"%M %d %Y %r\") as date_submitted from research_table r1
 join journal_table j2

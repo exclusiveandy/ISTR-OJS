@@ -1,6 +1,6 @@
 <?php
-require "../../../fpdf/fpdf.php";
-include "../../../function.php";
+require "../../fpdf/fpdf.php";
+include "../../function.php";
 class myPdf	extends FPDF{
 	function header(){
 		$this->Image('../../img/istrlogo.png',2,1);

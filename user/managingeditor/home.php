@@ -1,4 +1,4 @@
- <?php include("header.php");?>
+ <?php include("usernav.php");?>
   
 
   <div class="content-wrapper">
@@ -84,7 +84,7 @@ $data_user_count = trim($data_user_count, ",");
       <section class="content">
 
       <div class="row">
-          <div class="col-lg-3 col-6">
+          <div class="col-lg">
             <!-- small card -->
             <div class="small-box bg-info">
               <div class="inner">
@@ -119,7 +119,7 @@ $data_user_count = trim($data_user_count, ",");
       $row_author_count = fetch_assoc($count_author_query);
      ?>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg">
             <!-- small card -->
             <div class="small-box bg-success">
               <div class="inner">
@@ -156,7 +156,7 @@ $data_user_count = trim($data_user_count, ",");
       $row_EIC_count = fetch_assoc($count_EIC_query);
      ?>
 
-          <div class="col-lg-3 col-6">
+          <div class="col-lg">
             <!-- small card -->
             <div class="small-box bg-warning">
               <div class="inner">

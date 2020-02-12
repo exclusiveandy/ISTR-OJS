@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include "../../../function.php"; 
+<?php include "../../function.php"; 
 validate();?>
 <html>
 <head>

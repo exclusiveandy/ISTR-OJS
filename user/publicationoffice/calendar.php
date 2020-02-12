@@ -1,7 +1,7 @@
 <?php include "header.php";
 if(!isset($_SESSION['id']))
 {
-redirect('../../login.php');
+redirect('../../pages/login.php');
 }
   ?>
   <!-- Content Wrapper. Contains page content -->

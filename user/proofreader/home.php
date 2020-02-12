@@ -1,5 +1,9 @@
-    <?php include("header.php");?>
-  
+<?php include "usernav.php";
+if(!isset($_SESSION['id']))
+{
+redirect('../../pages/login.php');
+}
+  ?>
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

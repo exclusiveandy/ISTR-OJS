@@ -1,48 +1,43 @@
 <?php include("usernav.php"); ?>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
+    <div class="content-header">
+      <div class="container">
         <div class="row mb-2">
-          <div class="col-sm-6">
-          </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">
+            <h1 class="m-0 text-dark" style="font-size: 20pt; ">Document</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="home.php">Home</a></li>
               <li class="breadcrumb-item active">Document</li>
             </ol>
-          </div>
-        </div>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </section>
+    </div>
 
-    <section class="content">
-       <div class="card">
-              <div class="card-header p-0">
-                <ul class="nav nav-pills ml-auto p-2">
-                  <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Latest Document</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Timeline </a></li>                
-                </ul>
-              </div><!-- /.card-header -->
-                
-              <div class="card-body">
-                <div class="tab-content">
-                 
-                  <div class="tab-pane active" id="tab_1">
+    <!-- Main content -->
+    <div class="content">
+      <div class="container">
+        
+        <div class="card">
+          <div class="card-header p-0">
+            <ul class="nav nav-pills ml-auto p-2">
+              <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Latest Document</a></li>
+              <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Timeline </a></li>                
+            </ul>
+          </div><!-- /.card-header -->
+          <div class="card-body">
+            <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
   <div class="row">
   
-    <div class="col col-sm-12 col-md-8 col-lg-8">
+    <div class="col-md-8">
        
-      
-      <div class="card  card-primary">
-          <div class="card-header with-border">
-            <h3 class="card-title"><b>Document View</b></h3>
-          </div>
-
-          <div class="card-body">
-            <input type"text" id="r_id" value="<?php echo $_GET['r_id'];?>" hidden="true">
+     
+            <input type="text" id="r_id" value="<?php echo $_GET['r_id'];?>" hidden="true">
             <dl class="dl-horizontal">
               <?php if(isset($_GET['r_id']))
               {
@@ -59,15 +54,7 @@
                     <?php if(!empty($row['s_filename']))
                     {
                     ?>
-                    <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#tab_7" data-toggle="tab">Manuscript File</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#tab_8" data-toggle="tab">Supplementary File</a>
-  </li>
-
-</ul>
+                   
                <div class="tab-content">
                  
                   <div class="tab-pane active" id="tab_7">
@@ -76,7 +63,7 @@
                   ?>
                    
                         
-                         <iframe src ="../../../upload_pdf_file/<?php echo $filename;?>.pdf" width='640' height='840' scrolling="no"allowfullscreen webkitallowfullscreen></iframe>
+                         <iframe src ="../../uploads/pdf/<?php echo $filename;?>.pdf" width='100%' height="740px;" scrolling="no"allowfullscreen webkitallowfullscreen></iframe>
                        
 
 
@@ -87,8 +74,8 @@
                         $sfilename = substr($row['s_filename'], 0, strpos($row['s_filename'], "."))
                     ?>
                      </div>
-                       <div class="tab-pane" id="tab_8">
-                         <p><iframe src ="../../../upload_pdf_file/<?php echo $sfilename;?>.pdf" width='640' height='840' scrolling="no"allowfullscreen webkitallowfullscreen></iframe>
+                       <div class="tab-pane active" id="tab_8">
+                         <p><iframe src ="../../uploads/pdf/<?php echo $sfilename;?>.pdf" width='100%' height='100%' scrolling="no"allowfullscreen webkitallowfullscreen></iframe>
                        </p>
                        </div>
                 
@@ -97,12 +84,8 @@
               }?>
 
               </dl>
-          </div>
-          <div class="card-footer with-border">
-
-          </div>
-      </div>
-
+        
+     
 
       <div class="card  card-primary">
         <div class="card-header with-border">
@@ -133,7 +116,7 @@
 
 
     </div>
-    <div class="col col-lg-4 col-md-4 col-sm-12">
+    <div class="col-md-4">
 
 
         
@@ -212,160 +195,48 @@
   </div> 
   </div>    <!-- tab pane -->
 
-<div class="tab-pane" id="tab_2">
-   <?php
+            </div><!-- /.tab-content -->
+          </div><!-- /.card-body -->
+        </div><!-- /.card -->
 
-                     $chk_proofread_query = query("SELECT MAX(r1.user_role_id) as counter from research_file_history_table as r1 
-      JOIN research_table as r2
-      ON r1.research_id=r2.research_id
-      WHERE r1.research_id = '{$research_id}'");
-    $row_counter = fetch_assoc($chk_proofread_query);
-                  ?>
 
-                  <div class="order-status">
-     <ol class="progtrckr" style="width: 1145px">
-                <?php if($row_counter['counter'] == "1")
-                {
-                ?>
-<li class="progtrckr-done">Submitted</li>
-<li class="progtrckr-todo">Managing Editor</li>
-<li class="progtrckr-todo">Editor in Chief</li>
-<li class="progtrckr-todo">Internal Reviewer</li>
-<li class="progtrckr-todo">External Reviewer</li>
-<li class="progtrckr-todo">Proofreader</li>
-<li class="progtrckr-todo">Layout Editor</li>
-<li class="progtrckr-todo">Publication Office</li>
-        <?php
-        }
-  
-   else if($row_counter['counter'] == "2")
-                {
 
-                ?>
-<li class="progtrckr-done">Submitted</li>
-<li class="progtrckr-done">Managing Editor</li>
-<li class="progtrckr-todo">Editor in Chief</li>
-<li class="progtrckr-todo">Internal Reviewer</li>
-<li class="progtrckr-todo">External Reviewer</li>
-<li class="progtrckr-todo">Proofreader</li>
-<li class="progtrckr-todo">Layout Editor</li>
-<li class="progtrckr-todo">Publication Office</li>
-        <?php
-        }
+
+
+
+    
+
+
+        <div class="content-header">
+            <div class="container">
+               <div class="row mb-2">
+                  <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">           
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">
+                     <ol class="breadcrumb float-sm-right">            
+                     </ol>
+                  </div>
+                  <!-- /.col -->
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+         </div>
+      
+
+          
+      
+      
         
- else if($row_counter['counter'] == "3")
-                {
 
-                ?>
-<li class="progtrckr-done">Submitted</li>
-<li class="progtrckr-done">Managing Editor</li>
-<li class="progtrckr-done">Editor in Chief</li>
-<li class="progtrckr-todo">Internal Reviewer</li>
-<li class="progtrckr-todo">External Reviewer</li>
-<li class="progtrckr-todo">Proofreader</li>
-<li class="progtrckr-todo">Layout Editor</li>
-<li class="progtrckr-todo">Publication Office</li>
-        <?php
-        }
-         else if($row_counter['counter'] == "4")
-                {
-
-                ?>
-<li class="progtrckr-done">Submitted</li>
-<li class="progtrckr-done">Managing Editor</li>
-<li class="progtrckr-done">Editor in Chief</li>
-<li class="progtrckr-done">Internal Reviewer</li>
-<li class="progtrckr-todo">External Reviewer</li>
-<li class="progtrckr-todo">Proofreader</li>
-<li class="progtrckr-todo">Layout Editor</li>
-<li class="progtrckr-todo">Publication Office</li>
-        <?php
-        }
-         else if($row_counter['counter'] == "5")
-                {
-
-                ?>
-<li class="progtrckr-done">Submitted</li>
-<li class="progtrckr-done">Managing Editor</li>
-<li class="progtrckr-done">Editor in Chief</li>
-<li class="progtrckr-done">Internal Reviewer</li>
-<li class="progtrckr-done">External Reviewer</li>
-<li class="progtrckr-todo">Proofreader</li>
-<li class="progtrckr-todo">Layout Editor</li>
-<li class="progtrckr-todo">Publication Office</li>
-        <?php
-        }
-         else if($row_counter['counter'] == "6")
-                {
-
-                ?>
-<li class="progtrckr-done">Submitted</li>
-<li class="progtrckr-done">Managing Editor</li>
-<li class="progtrckr-done">Editor in Chief</li>
-<li class="progtrckr-done">Internal Reviewer</li>
-<li class="progtrckr-done">External Reviewer</li>
-<li class="progtrckr-done">Proofreader</li>
-<li class="progtrckr-todo">Layout Editor</li>
-<li class="progtrckr-todo">Publication Office</li>
-        <?php
-        }
-         else if($row_counter['counter'] == "7")
-                {
-
-                ?>
-<li class="progtrckr-done">Submitted</li>
-<li class="progtrckr-done">Managing Editor</li>
-<li class="progtrckr-done">Editor in Chief</li>
-<li class="progtrckr-done">Internal Reviewer</li>
-<li class="progtrckr-done">External Reviewer</li>
-<li class="progtrckr-done">Proofreader</li>
-<li class="progtrckr-done">Layout Editor</li>
-<li class="progtrckr-todo">Publication Office</li>
-        <?php
-        }
-
-         else
-                {
-
-                ?>
-<li class="progtrckr-done">Submitted</li>
-<li class="progtrckr-done">Managing Editor</li>
-<li class="progtrckr-done">Editor in Chief</li>
-<li class="progtrckr-done">Internal Reviewer</li>
-<li class="progtrckr-done">External Reviewer</li>
-<li class="progtrckr-done">Proofreader</li>
-<li class="progtrckr-done">Layout Editor</li>
-<li class="progtrckr-todo">Publication Office</li>
-        <?php
-        }
-        ?>
-
-</ol>
-</div>
-</div>
-</div>
-</section>  
+       
+      </div><!-- /.container-fluid -->
+    </div> <!-- /.content -->
 
 
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
 
- <footer class="main-footer">
-
-  </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-
-
- 
-
-<!-- ./wrapper -->
+  </div>    <!-- /.content-wrapper -->
 
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>

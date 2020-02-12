@@ -1,5 +1,5 @@
 <?php
- include "../../../function.php"; 
+ include "../../function.php"; 
 if(isset($_POST['authors_id']))
 {
 	$authors_id = $_POST['authors_id'];

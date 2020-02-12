@@ -268,6 +268,9 @@ function pdf_conversion($file,$filename)
   // open the word 2007-2013 document    
   $word->Documents->Open(getcwd()."/{$file}"); //localhost   //dirname($url_link)."/uploads/original/{$file}.docx"  
   // convert word 2007-2013 to PDF
+  $url_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+  chdir('../../uploads/pdf');
   $word->ActiveDocument->ExportAsFixedFormat(getcwd()."/{$filename}.pdf", 17, false, 0, 0, 0, 0, 7, true, true, 2, true, true, false);
   // quit the Word process
   $word->Documents->Close(false);

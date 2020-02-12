@@ -42,7 +42,7 @@ include "../../function.php";
                 $replacement = '(SV1-'.$maxid.').';
                 $s_filename = preg_replace($pattern,$replacement,$original_name_s);              
                 $pdf_name_s = substr($s_filename, 0, strpos($s_filename, "."));
-                $target2 = "../../../uploads/original/".$s_filename;
+                $target2 = "../../uploads/original/".$s_filename;
                 $copy_file_s = "../../uploads/pdf/".$s_filename;
                 move_uploaded_file($_FILES['file2']['tmp_name'],  $target2);  
 

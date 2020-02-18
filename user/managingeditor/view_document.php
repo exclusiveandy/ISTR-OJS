@@ -1,68 +1,83 @@
 <?php include("usernav.php");?>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
+    <div class="content-header">
+      <div class="container">
         <div class="row mb-2">
-          <div class="col-sm-6">
-          </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">
+            <h1 class="m-0 text-dark" style="font-size: 20pt; ">D Profile</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-              <li class="breadcrumb-item active">Document</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Profile</li>
             </ol>
-          </div>
-        </div>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </section>
+    </div>
 
-  <section class="content">
-      <div style="padding: 5px;">
-       
-        <div class="alert alert-danger  text-center" id="error_submission" role="alert" style="display:none; position:fixed; top: 0px; left: 0px; width: 100%; z-index:9999; border-radius:0px"><h3><strong>The system is only accepting PDF file(.pdf)</strong></h3> 
-        </div>
-
-          <div class="alert alert-secondary  text-center" id="error_comment_appraise" role="alert" style="display:none; position:fixed; top: 0px; left: 0px; width: 100%; z-index:9999; border-radius:0px"><h3><strong>You need to enter an appraise or comment</strong></h3> 
-        </div>
+    <!-- Main content -->
+    <div class="content">
     <?php 
     $research_query = query("SELECT * from research_file_table where research_id = '{$_GET['r_id']}' ORDER BY date_uploaded desc");
     if(row_count($research_query) > 1)
     {
+    }
 
     ?>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-lg col-md col-sm">
+                    <div class="form-group">
+                    <a class="btn btn-default bg-danger btn-block" href="" id="manuscriptbtn"><i class="fa fa-book"></i> Manuscript</a>
+                    </div>
+                  </div>
 
-     <div class="card">
-              <div class="card-header p-0">
-                <ul class="nav nav-pills ml-auto p-2">
-                  <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Latest Document</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Old Document </a></li>                
-                </ul>
-              </div><!-- /.card-header -->
-                
-              <div class="card-body">
-                <div class="tab-content">
-                 
-                  <div class="tab-pane active" id="tab_1">
-
-                    <?php
+                  <?php                  
+                  $research_query = query("SELECT * from research_file_table where research_id = '{$_GET['r_id']}' ORDER BY date_uploaded desc");
+                  if(row_count($research_query) > 1)
+                  {
+                    echo "<div class='col-lg col-md col-sm' id='unrevised'>
+                            <div class='form-group'>
+                              <a class='btn btn-default btn-block' href='' id='unrevisedbtn' ><i class='fa fa-book-open'></i> Unrevised</a>
+                            </div>
+                          </div> ";  
                   }
                   ?>
-  <div class="row">
-  
-    <div class="col col-sm-12 col-md-8 col-lg-8">
-       
-      
-      <div class="card  card-primary">
-          <div class="card-header with-border">
-            <h3 class="card-title"><b>Document View</b></h3>
-          </div>
+                  
 
 
-      <div class="card-body">
-            <input type"text" id="r_id" value="<?php echo $_GET['r_id'];?>" hidden="true">
-            <dl class="dl-horizontal">
+                  <div class="col-lg col-md col-sm">
+                    <div class="form-group">
+                      <a class="btn btn-default btn-block" href="" id="uploadedbtn" ><i class="fa fa-file-archive"></i> Files</a>
+                    </div>
+                  </div> 
+                  <div class="col-lg col-md col-sm">
+                    <div class="form-group">
+                      <button type="button" 
+                        class="btn btn-warning btn-block"
+                        style="float:right;" 
+                        data-toggle="modal" 
+                        id="appraisal"
+                        data-target="#modal-default" hidden>
+                        <i class="fa fa-file-medical"></i> Add an Appraisal
+                      </button>
+                    </div>
+                  </div>
+                </div>   
+              </div>
+
+              
+
+              <div class="tab-content">
+              <input type="text" id="r_id" value="<?php echo $_GET['r_id'];?>" hidden="true">
+
               <?php if(isset($_GET['r_id']))
               {
 
@@ -71,806 +86,309 @@
                   while($row = fetch_assoc($query))
                   {
                    
-                        $filename = substr($row['r_filename'], 0, strpos($row['r_filename'], "."))
+                        $filename = substr($row['r_filename'], 0, strpos($row['r_filename'], "."));
+                        $sfilename = substr($row['s_filename'], 0, strpos($row['s_filename'], "."));
+
+
+                  
                        
               ?>
 
-                    <?php if(!empty($row['s_filename']))
-                    {
-                    ?>
-                    <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#tab_7" data-toggle="tab">Manuscript File</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#tab_8" data-toggle="tab">Supplementary File</a>
-  </li>
-
-</ul>
-               <div class="tab-content">
-                 
-                  <div class="tab-pane active" id="tab_7">
-                  <?php
-                  }
-                  ?>
-                   
-                        
-                         <iframe src ="../../../upload_pdf_file/<?php echo $filename;?>.pdf" width='640' height='840' scrolling="no"allowfullscreen webkitallowfullscreen></iframe>
-                       
-
-
-                      
-                    
-                     <?php if(!empty($row['s_filename']))
-                    {
-                        $sfilename = substr($row['s_filename'], 0, strpos($row['s_filename'], "."))
-                    ?>
-                     </div>
-                       <div class="tab-pane" id="tab_8">
-                         <p><iframe src ="../../../upload_pdf_file/<?php echo $sfilename;?>.pdf" width='640' height='840' scrolling="no"allowfullscreen webkitallowfullscreen></iframe>
-                       </p>
-                       </div>
-                
-                </div>
-                <?php
-              }?>
-
-              </dl>
-          </div>
-                   
-
-
-          <div class="card-footer with-border">
-
-          </div>
-      </div>
-
-
-      <div class="card  card-primary">
-        <div class="card-header with-border">
-        
-        <h3 class="card-title"><b>Uploaded Files  </b></h3>
-        </div>
-        <div class="card-body">
-          <h5><b>Manuscript File </b></h5>
-          <table class="table table-bordered table-condensed table-striped">
-                    <tr><th>Original File</th>
               
-              <th>Date Uploaded</th>
-              <th></th>
-            </tr>
-            <tr>
-            <td>
-            <h5><a href="download.php?path=../../../upload_original_file/<?php echo $row{'r_filename'};?>" target="_blank">
-            <?php echo $row{'r_filename'};?></a></h5>
-            </td>
-             <td colspan="2"><h5><?php echo $row{'date_submitted'};?></h5></td>
-           </tr>
-           </table>
-           </div>
-           
-            <?php show_supplementary_file($row['s_filename'])?>
+
+
+
+               <div class="tab-pane active" id="manuscript_tab">                             
+                <iframe src ="../../uploads/pdf/<?php echo $filename;?>.pdf" width='100%' height='500' scrolling="no" allowfullscreen webkitallowfullscreen></iframe>
+               </div>
                
-      </div>
-
-
-
-
-    </div>
-    <div class="col col-lg-4 col-md-4 col-sm-12">
-
-
-        
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Article Metadata</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <div id="accordion">
-                  <!-- we are adding the .class so bootstrap.js collapse plugin detects it -->
-                  <div class="card card-primary">
-                    <div class="card-header">
-                      <h4 class="card-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                          Title
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in">
-                      <div class="card-body">
-                        <?php echo $row{'title'}; ?>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card card-danger">
-                    <div class="card-header">
-                      <h4 class="card-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                          Abstract
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse">
-                      <div class="card-body">
-                        <?php echo $row{'abstract'};  }}?>
-                      </div>
-                    </div>
-                  </div>
-
-
-                       <div class="card card-warning">
-                    <div class="card-header">
-                      <h4 class="card-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#authorcollapse">
-                          Author(s) and Affliation
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="authorcollapse" class="panel-collapse collapse">
-                      <div class="card-body">
-                        <?php   
-                  $query2 = query("SELECT * from research_table join authors_table on research_table.research_id=authors_table.research_id where research_table.research_id = '{$research_id}'");
-                  while($row2 = fetch_assoc($query2))
-                  {
-                    echo "Name: ".$row2['authors_first_name']. " ".$row2['authors_middle_name']." ".$row2['authors_last_name'];
-                    echo '<br>';
-                    echo "Affliation: ".$row2['authors_affliation'];
-                    echo '<br>';
-                    echo '<br>';
-                  }
-                    ?>
-                    
-                      </div>
-                    </div>
-                  </div>
-                  
-       
-                </div>
-                
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-            
-
-
-
-        <div class="card" style="width: 345px">
-        <div class="card-header with-border">
-                <ul class="nav nav-pills ml-auto p-2">
-
-                  <li class="nav-item"><a class="nav-link
-                    <?php
-            $id = $_GET['r_id'];
-                           $query = query("SELECT * from line_number where research_id = '{$id}'");
-                           
-                           if(row_count($query) == 0)
-                          {
-                          echo "active";
-                          }?>
-                            " href="#tab_3" data-toggle="tab">Timeline </a></li>
-                     <?php
-            $id = $_GET['r_id'];
-                           $query = query("SELECT * from line_number where research_id = '{$id}'");
-                           
-                           if(row_count($query) > 0)
-                          {
-
-                            ?>
-                  <li class="nav-item"><a class="nav-link <?php
-            $id = $_GET['r_id'];
-                           $query = query("SELECT * from line_number where research_id = '{$id}'");
-                           
-                           if(row_count($query) > 0)
-                          {
-                          echo "active";
-                          }
-                          ?>" href="#tab_4" data-toggle="tab">Appraises</a></li>
-                   <?php
-                }
-                ?>
-                  <?php 
-                  $comment_query = query("SELECT * from comment_table where research_id = '{$id}'");
-                  if(row_count($comment_query)>0)
-                  {
-                  ?>
-                  <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">Comment</a></li>   
-                  <?php             
-                  }
-                  ?>
-                </ul>
-              </div><!-- /.card-header -->
-                
-              <div class="card-body">
-                <div class="tab-content">
+           
+               <div class="tab-pane" id="uploaded_tab">
+             
                  
-                  <div class="tab-pane <?php
-            $id = $_GET['r_id'];
-                           $query = query("SELECT * from line_number where research_id = '{$id}'");
-                           
-                           if(row_count($query) > 0)
-                          {
-                          echo "active";
-                          }
-                          ?>" id="tab_4">
-                        <div style="max-height:200px; overflow-y:scroll;">
-                          <table class="table table-bordered" id="hello2" name="hello2">
-                            <tr>
-                              <th>#</th>
-                              <th>Appraise(s)</th>
-                            </tr>  
-                            <?php show_appraises();?>
-                                          
-                          </table>
-
+                  <div class="card-body">
+                  <h5><b>Article Metadata</b></h5>
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-3">
+                            <h6 class="text-secondary"><b>Title</b></h6>
+                          </div>
+                          <div class="col-9">
+                            <h5><b><i><?php echo $row{'title'}; ?></i></b></h5>
+                          </div>
                         </div>
-                       </div>
-                       <div class="tab-pane" id="tab_5">
-                        <div style="max-height:200px; overflow-y:scroll;">
-                          <?php 
-                  $comment_query = query("SELECT * from comment_table where research_id = '{$id}'");
-                  $row_comment = fetch_assoc($comment_query);
-                  ?>
-                          <p><?php echo $row_comment['content'];?></p>
-                       </div>
-                       </div>
-                       <div class="tab-pane <?php
-            $id = $_GET['r_id'];
-                           $query = query("SELECT * from line_number where research_id = '{$id}'");
-                           
-                           if(row_count($query) == 0)
-                          {
-                          echo "active";
-                          }?>" id= "tab_3">
-                         <div style="max-height:200px; overflow-y:scroll;">
-                          <ul class="timeline">
-               <!-- to be for looped-->
-                     <?php
-               $id = $_GET['r_id']; 
-                $sql = query("SELECT Type,   DATE_FORMAT(timeline_date, \"%M\") as month, DATE_FORMAT(timeline_date, \"%d\") as day, timeline_date as t1, DATE_FORMAT(timeline_date, \"%Y\") as year,  DATE_FORMAT(timeline_date, \"%M %d %Y %r\") as timeline_date, Remarks from timeline_table  as  t1 join research_table as r2 on  t1.document_id=r2.research_id  where r2.research_id='{$id}' order by t1 desc");
-                while($row = fetch_assoc($sql))
+                        <hr>
+                        <div class="row">
+                          <div class="col-3">
+                            <h6 class="text-secondary"><b>Abstract</b></h6>
+                          </div>
+                          <div class="col-9">
+                            <h6><i><?php echo $row{'abstract'};?></i></h6>
+                          </div>
+                        </div>  
+                        <hr>
+                        <div class="row">
+                          <div class="col-3">
+                            <h6 class="text-secondary"><b>Author(s)</b></h6>
+                          </div>
+                          <div class="col-9">
+                            <?php   
+                            $query2 = query("SELECT * from research_table join authors_table on research_table.research_id=authors_table.research_id where research_table.research_id = '{$research_id}'");
+                            while($row2 = fetch_assoc($query2))
+                            {
+                              echo "<h6><b><i>".$row2['authors_first_name']. " ".$row2['authors_middle_name']." ".$row2['authors_last_name']."</i></b></h6>";
+                              echo "<h6><small>".$row2['authors_email']."</small></h6>";
+                              echo "<h6><small>".$row2['authors_affliation']."</small></h6><hr>";
+                            }
+
+                            
+                            ?>
+                            
+                          </div>
+                        </div>                    
+                      </div>
+                    </div>
+
+
+                  <h5><b>Manuscript File</b></h5>
+                  <div style="max-height:200px; overflow: auto;">
+                    <table class="table table-bordered table-condensed table-striped">
+                              <tr>
+                                <th>File(s)</th>                      
+                                <th>Date Uploaded</th>                              
+                              </tr>
+                              <?php
+                              $files = query("SELECT * from research_file_table where research_id = '{$research_id}' order by date_uploaded desc");
+                              while($rowsup = fetch_assoc($files))
+                              {
+
+                              
+                                echo "<tr>
+                                        <td>
+                                          <h5><a href='download.php?path=../../uploads/original/".$rowsup['research_file']."' target='_blank'>".$rowsup['research_file']."</a></h5>
+                                        </td>
+                                        <td>
+                                          <h5>".$rowsup['date_uploaded']."</h5>
+                                        </td>
+                                      </tr>";
+                                      
+                              }
+                              ?>
+                    </table>
+                  </div>
+                  <br>
+                  <h5><b>Supplementary File (Latest)</b></h5>
+                  <iframe src ="../../uploads/pdf/<?php echo $sfilename;?>.pdf" width='100%' height='500' scrolling="no" allowfullscreen webkitallowfullscreen></iframe>        
+               
+                  <h5><b>Supplementary File(s)</b></h5>
+                  <div style="max-height:200px; overflow: auto;">
+                    <table class="table table-bordered table-condensed table-striped">
+                              <tr>
+                                <th>File(s)</th>                      
+                                <th>Date Uploaded</th>
+                              </tr>
+                              
+                              <?php
+                              $files = query("SELECT * from research_file_table where research_id = '{$research_id}' order by date_uploaded desc");
+                              while($rowsup = fetch_assoc($files))
+                              {
+
+                              
+                                echo "<tr>
+                                        <td>
+                                          <h5><a href='download.php?path=../../uploads/original/".$rowsup['supplementary_file']."' target='_blank'>".$rowsup['supplementary_file']."</a></h5>
+                                        </td>
+                                        <td>
+                                          <h5>".$rowsup['date_uploaded']."</h5>
+                                        </td>
+                                      </tr>";
+                                      
+                              }
+                              ?>
+
+                              
+                    </table>
+                  </div>
+                  <br>
+                  </div>   
+
+                  
+                
+                       
+                  
+
+              
+               
+                </div>
+
+                <?php
+                    } //while <?php show_supplementary_file($row['s_filename'])
+                } //isset r_id
+                ?>
+
+                <div class="tab-pane" id="unrevised_tab">
+                <?php if(isset($_GET['r_id']))
                 {
 
+                    $research_id = escape_string($_GET['r_id']);
+                    $query = query("SELECT  * FROM research_file_table where research_id = '{$research_id}' ORDER BY date_uploaded asc LIMIT 1");
+                    while($row = fetch_assoc($query))
+                    {
+                      $filename = substr($row['research_file'], 0, strpos($row['research_file'], "."));
+                      echo "<iframe src ='../../uploads/pdf/$filename.pdf' width='100%' height='500' scrolling='no' allowfullscreen webkitallowfullscreen></iframe>";
 
-              ?>
-                  <li>
-                    <i class="fa fa-envelope bg-blue"></i>
-                    <div class="timeline-item" style="width: 250px">
-                      <span class="time"><i class="fa fa-clock-o"></i><small><?php echo $row['timeline_date'];?> </small></span>
-                      <h4 class="timeline-header"><small><b><a href="#"><?php echo $row['Type'];?></a></b></small></h4>
-                      <div class="timeline-body">
-                        <?php echo $row['Remarks'];?>
-                      </div>  
-                    </div>
-                  </li>
-                  <?php 
-                }
-                ?>
-                </ul>
-              </div>
-                       </div>
-                  </div>
-                  </div>
-                  </div>
-               
-                 
-
-
-
-
-
-
-     
-
-<?php
-$chk_proofread_query = query("SELECT MAX(r1.user_role_id) as counter from research_file_history_table as r1 
-      JOIN research_table as r2
-      ON r1.research_id=r2.research_id
-      WHERE r1.research_id = '{$id}'");
-    $row_counter = fetch_assoc($chk_proofread_query);
-
-    if(($row_counter['counter'] == 1))
-    {
-?>
-
-
-
-        <div class="card">
-        <div class="card-header with-border">
-        <h3 class="card-title"><b>Pointers to Check</b></h3>
-        </div>
-        <div class="card-body" style="max-height:200px;">
-                      <div class="form-group">
-
-
-                    <div class="form-check" style="text-align: center;" id="chcbox_plagiarism">                     
-                      <input class="form-check-input" type="checkbox" id= "real_chcbox_plagiarism">
-                      <label class="form-check-label"> <label>Passed on plagiarism <br>(11% below)</br></label>
+                      if(!empty($row['supplementary_file']))
+                      {
+                        $s2filename = substr($row['supplementary_file'], 0, strpos($row['supplementary_file'], "."));
+                        echo "<iframe src ='../../uploads/pdf/$s2filename.pdf' width='100%' height='500' scrolling='no' allowfullscreen webkitallowfullscreen></iframe>";
+                      }
                       
-                    </div>  
-                     <div class="form-check" style="text-align: center;"  id="chcbox_format" hidden>                     
-                      <input class="form-check-input" type="checkbox" id="real_chcbox_format">
-                      <label class="form-check-label"><label>Passed on the Journal Format</label></label>
-                    </div>  
-                   
-        
-                  </div>
-
-        </div>
-      </div>
-      
-      
-     
-      <div class="card">
-        <div class="card-header" id="Appraise_header" hidden>
-          <h3 style="float:left" >Appraise</h3>
-            <button type="button" 
-                    class="btn btn-warning"
-                    style="float:right;" 
-                    data-toggle="modal" 
-                    id="Appraisal"
-                    data-target="#modal-default">
-                    Add an Appraise
-            </button>
-                
-        </div>
-        <div class="card-body" >
-<form method="POST">
-<div id="receipt_plagiarism">
-<label>Upload the receipt for plagiarism</label>
-<input class="form-control" type="file" id="receipt_file">
-</div>
-                  
-                  <div style="max-height:200px; overflow-y:scroll; ">
-                          <table class="table table-bordered" id="hello" name="hello" hidden>
-                            <thead>
-                            <tr>
-                              <th>Line #</th>
-                              <th>Appraise</th>
-                              <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                              
-
-                            </tbody>
-                          
-                            
-                                          
-                          </table>
-                  </div>
-                  
-                  <br>
-
-
-
-                 <div class="form-group" id="verdict" hidden>
-                    <label>Options</label>
-                    <select class="form-control" id="verdict_select" disabled >
-                      <option value="0">Rejected</option>
-                      <option value="1">Accepted with Revisions</option>
-                    </select>
-                  </div>
-                 
-                  <div class="form-group">
-                    <label id="Comment_header">Comments</label>
-                    <textarea class="form-control" rows="3" id="Comment" name="Comment" placeholder="Enter ...">Rejected due to plagiarism</textarea>
-                  </div>
-          
-            <a href="" class="btn btn-block btn-danger" id="rejected">Rejected As It Is</a>
-           <div id="loader" style="display: none; text-align: center;">
-           <img src="../../images/loading3.gif" width="50px" height="50px">
-           </div>
-            <button class="btn btn-block btn-success" id="accepted" name="accepted" hidden>Accepted As It Is</button>
-            <button class="btn btn-block btn-success" id="accepted_with_revisions" name="accepted_with_revisions" hidden>Accepted with Revision</button>
-               </form>
-<?php 
-if(isset($_POST['accepted']))
-{
-  $id = $_GET['r_id'];
-  $remarks = $_POST['Comment'];
-  redirect("accept.php?r_id=$id&remarks=$remarks");
-  }
-
-?>
-          
-        </div>
-      </div>
-<?php
-}
-else
-{
-?>
-
-
-
- <div class="card">
-        <div class="card-header with-border">
-        <h3 class="card-title"><b>Pointers to Check</b></h3>
-        </div>
-        <div class="card-body" style="max-height:200px;">
-                      <div class="form-group">
-
-
-                    <div class="form-check" style="text-align: center;" id="chcbox_plagiarism">                     
-                      <input class="form-check-input" type="checkbox" id= "real_chcbox_plagiarism">
-                      <label class="form-check-label"> <label>Passed on plagiarism <br>(11% below)</br></label>
-                    </div>  
-                  </div>
-
-        </div>
-      </div>
-      
-      
-     
-      <div class="card">
-        <div class="card-header" id="Appraise_header" hidden>
-          <h3 style="float:left" >Appraise</h3>
-            <button type="button" 
-                    class="btn btn-warning"
-                    style="float:right;" 
-                    data-toggle="modal" 
-                    id="Appraisal"
-                    data-target="#modal-default">
-                    Add an Appraise
-            </button>
-                
-        </div>
-        <div class="card-body" >
-<form method="POST">
-<div id="receipt_plagiarism">
-<label>Upload the receipt for plagiarism</label>
-<input class="form-control" type="file" id="receipt_file">
-</div>
-                  
-                  <div style="max-height:200px; overflow-y:scroll; ">
-                          <table class="table table-bordered" id="hello" name="hello" hidden>
-                            <thead>
-                            <tr>
-                              <th>Line #</th>
-                              <th>Appraise</th>
-                              <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                              
-
-                            </tbody>
-                          
-                            
-                                          
-                          </table>
-                  </div>
-                  
-                  <br>
-
-
-
-                 <div class="form-group" id="verdict" hidden>
-                    <label>Options</label>
-                    <select class="form-control" id="verdict_select" disabled >
-                      <option value="0">Rejected</option>
-                      <option value="1">Accepted with Revisions</option>
-                       <option value="2">Accepted</option>
-                    </select>
-                  </div>
-                 
-                  <div class="form-group">
-                    <label id="Comment_header">Comments</label>
-                    <textarea class="form-control" rows="3" id="Comment" name="Comment" placeholder="Enter ...">Rejected due to plagiarism</textarea>
-                  </div>
-          
-            <a href="reject.php?r_id=<?php echo $_GET['r_id'];?>"class="btn btn-block btn-danger" id="rejected">Rejected As It Is</a>
-           <div id="loader" style="display: none; text-align: center;">
-           <img src="../../images/loading3.gif" width="50px" height="50px">
-           </div>
-            <button class="btn btn-block btn-success" id="accepted" name="accepted" hidden>Accepted As It Is</button>
-            <button class="btn btn-block btn-success" id="accepted_with_revisions" name="accepted_with_revisions" hidden>Accepted with Revision</button>
-               </form>
-<?php 
-if(isset($_POST['accepted']))
-{
-  $id = $_GET['r_id'];
-  $remarks = $_POST['Comment'];
-  redirect("accept.php?r_id=$id&remarks=$remarks");
-}
-?>
-          
-      </div>
-      </div>
-
-<?php
-}
-?>  
-
-
-
-
-
-    </div>
-  </div>
-  
-
-<?php 
-    $research_query = query("SELECT * from research_file_table where research_id = '{$_GET['r_id']}'");
-    if(row_count($research_query) > 1)
-    {
-
-    ?>
-  </div>     <!-- tab pane -->
-
-<div class="tab-pane" id="tab_2">
-            
-  <div class="row">
-  
-    <div class="col col-sm-12 col-md-8 col-lg-8">
-       
-      
-      <div class="card  card-primary">
-          <div class="card-header with-border">
-            <h3 class="card-title"><b>Document View</b></h3>
-          </div>
-
-
- 
-<div class="card-body">
-            <input type"text" id="r_id" value="<?php echo $_GET['r_id'];?>" hidden="true">
-            <dl class="dl-horizontal">
-              <?php if(isset($_GET['r_id']))
-              {
-
-                  $research_id = escape_string($_GET['r_id']);
-                  $query = query("SELECT  * FROM research_file_table where research_id = '{$research_id}' ORDER BY date_uploaded asc LIMIT 1");
-                  while($row = fetch_assoc($query))
-                  {
-                    $filename = substr($row['research_file'], 0, strpos($row['research_file'], "."))
-              ?>
-<?php if(!empty($row['s_location']))
-                    {
-                    ?>
-                    <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#tab_9" data-toggle="tab">Manuscript File</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#tab_10" data-toggle="tab">Supplementary File</a>
-  </li>
-
-</ul>
-               <div class="tab-content">
-                 
-                  <div class="tab-pane active" id="tab_9">
-                  <?php
-                  }
-                  ?>
-                     
-                         <iframe src ="../../../upload_pdf_file/<?php echo $filename;?>.pdf" width='640' height='840' scrolling="no"allowfullscreen webkitallowfullscreen></iframe>
-    <?php if(!empty($row['supplementary_file']))
-                    {
-                        $s2filename = substr($row['supplementary_file'], 0, strpos($row['supplementary_file'], "."))
-
-                    ?>
-                     </div>
-                       <div class="tab-pane" id="tab_10">
-                         <iframe src ="../../../upload_pdf_file/<?php echo $s2filename;?>.pdf" width='640' height='840' scrolling="no"allowfullscreen webkitallowfullscreen></iframe>
-                       
-                       </div>
-                
-                </div>
-                <?php
-              }?>
-              </dl>
-          </div>
-
-         
-                  
-          <div class="card-footer with-border">
-
-          </div>
-      </div>
-
-
-      <div class="card  card-primary">
-        <div class="card-header with-border">
-        
-        <h3 class="card-title"><b>Uploaded Files  </b></h3>
-        </div>
-        <div class="card-body">
-          <h5><b>Manuscript File </b></h5>
-          <table class="table table-bordered table-condensed table-striped">
-                    <tr><th>Original File</th>
-              
-              <th>Date Uploaded</th>
-              <th></th>
-            </tr>
-            <tr>
-            <td>
-            <h5><a href="download.php?path=../../../upload_original_file/<?php echo $row{'research_file'};?>" target="_blank">
-            <?php echo $row{'research_file'};?></a></h5>
-            </td>
-             <td colspan="2"><h5><?php echo $row{'date_uploaded'};?></h5></td>
-           </tr>
-           </table>
-           </div>
-           
-            <?php show_supplementary_file($row['supplementary_file'])?>
-               
-      </div>
-
-
-
-
-    </div>
-    <div class="col col-lg-4 col-md-4 col-sm-12">
-
-
-        
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Article Metadata</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <div id="accordion">
-                  <!-- we are adding the .class so bootstrap.js collapse plugin detects it -->
-                  <div class="card card-primary">
-                    <div class="card-header">
-                      <h4 class="card-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                          Title
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in">
-                      <div class="card-body">
-                        <?php echo $row{'title'}; ?>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card card-danger">
-                    <div class="card-header">
-                      <h4 class="card-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                          Abstract
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse">
-                      <div class="card-body">
-                        <?php echo $row{'abstract'};  }}?>
-                      </div>
-                    </div>
-                  </div>
-
-
-                       <div class="card card-warning">
-                    <div class="card-header">
-                      <h4 class="card-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#authorcollapse">
-                          Author(s) and Affliation
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="authorcollapse" class="panel-collapse collapse">
-                      <div class="card-body">
-                        <?php   
-                  $query2 = query("SELECT * from research_table join backup_author_table b on research_table.research_id=b.research_id where research_table.research_id = '{$research_id}'");
-                  while($row2 = fetch_assoc($query2))
-                  {
-                    echo "Name: ".$row2['authors_first_name']. " ".$row2['authors_middle_name']." ".$row2['authors_last_name'];
-                    echo '<br>';
-                    echo "Affliation: ".$row2['authors_affliation'];
-                    echo '<br>';
-                    echo '<br>';
-                  }
-                    ?>
+                    }
                     
-                      </div>
-                    </div>
-                  </div>
-                  
-       
-                </div>
-                
+
+                }
+                ?>
+
+
+               </div>
+
+             
+
               </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
 
-             <?php
-
-               $id = $_GET['r_id'];
-                           $query = query("SELECT * from line_number where research_id = '{$id}'");
-                           if(row_count($query) > 0)
-                          {
-
-                            ?>
-        <div class="card">
-        <div class="card-header with-border">
-          <h3 class="card-title"><b>Old Appraises</b></h3>
-        </div>
-                        <div style="max-height:200px; overflow-y:scroll;">
-                          <table class="table table-bordered" id="hello2" name="hello2">
-                            <tr>
-                              <th>#</th>
-                              <th>Appraise(s)</th>
-                            </tr>  
-                            <?php show_appraises();?>
-                                          
-                          </table>
-
-                        </div>
-                  </div>
-                  <?php
-                }
-                ?>
-            
-
-
-   <?php
-                           $comment_query = query("SELECT * from comment_table where research_id = '{$id}'");
-                          
-                           if(row_count($comment_query) > 0)
-                          {
-                            $row_comment = fetch_assoc($comment_query);
-                            ?>
-                               <div class="card">
-        <div class="card-header with-border">
-          <h3 class="card-title"><b>Comment</b></h3>
-        </div>
-          <div class="card-body">
-                          <div style="max-height:200px;">
-                          <ul class="timeline">
-               <!-- to be for looped-->
               
-                  <li>
-                    <i class="fa fas fa-comments"></i>
-                    <div class="timeline-item" style="width: 250px">
-                      <div class="timeline-body">
-                        <?php echo $row_comment['content'];?>
-                      </div>  
-                    </div>
-                    </div>
-                  </li>
-               
-                     
-                </ul> 
-                   </div>       
+                      
 
-                  
-             </div>
-                
-                  <?php
-                }
-                ?>
+            </div>
 
+          </div>
+          
+          
+          <div class="col-md-4">
+            <div class="card" id="appraisalcard" hidden>
+              <div class="card-header with-border">
+              <h3 class="card-title"><b>Appraisal(s)</b></h3>
+              </div>
+              <div class="card-body">
+                <div style="max-height:200px; overflow-y:scroll; ">
+                  <table class="table table-bordered" id="hello" name="hello">
+                    <thead>
+                    <tr>
+                      <th>Line #</th>
+                      <th>Appraise</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>  
 
-
-  
-  </div>    <!-- tabconent -->     
-</div>    <!-- card body --> 
-
-</div> <!-- card -->     
-<?php
-  }
-  ?>
+                    </tbody>     
+                  </table>
+                </div>
+              </div>
+            </div>
 
 
+            <div class="card">
+              <div class="card-header with-border">
+              <h3 class="card-title"><b>Guidelines to Check</b></h3>
+              </div>
+              <div class="card-body" style="max-height:200px;">
+                <div class="form-group">
+                  <div class="form-check" id="chcbox_plagiarism">                     
+                    <input class="form-check-input" type="checkbox" id= "real_chcbox_plagiarism">
+                    <label class="form-check-label"> <label>Passed on plagiarism <small> (11% below)</small></label>                            
+                  </div>                    
+                  <div class="form-check" id="chcbox_format" hidden>                     
+                    <input class="form-check-input" type="checkbox" id="real_chcbox_format">
+                    <label class="form-check-label"><label>Passed on the Journal Format</label></label>
+                  </div>   
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header with-border">
+              <h3 class="card-title"><b>Verdict</b></h3>
+              </div>
+              <div class="card-body">
+                  <!--PLAGIARISM-->
+                  <div id="receipt_plagiarism">
+                    <div class="form-group">
+                    <label>Upload the receipt for plagiarism</label>
+                      <input  type="file" id="receipt_file">                    
+                    </div> 
+                  </div>
+
+                  <!--OPTIONS-->
+                  <div class="form-group" id="verdict" hidden>
+                    <label>Options</label>
+                    <select class="form-control" id="verdict_select" disabled >
+                      <option value="0">Rejected</option>
+                      <option value="1">Accepted with Revisions</option>
+                    </select>
+                  </div>
+
+                  <!--COMMENTS-->
+                  <div class="form-group">
+                    <label id="Comment_header">Comments</label>
+                    <textarea class="form-control" rows="3" id="Comment" name="Comment" placeholder="Enter ...">Rejected due to plagiarism</textarea>
+                  </div>
+
+                  <a href="" class="btn btn-block btn-danger" id="rejected">Rejected As It Is</a>
+                  <div id="loader" style="display: none; text-align: center;">
+                    <img src="../../images/loading3.gif" width="50px" height="50px">
+                  </div>
+
+                  <button class="btn btn-block btn-success" id="accepted" name="accepted" hidden>Accepted As It Is</button>
+                  <button class="btn btn-block btn-success" id="accepted_with_revisions" name="accepted_with_revisions" hidden>Accepted with Revision</button>
 
 
 
 
 
+              </div>
+            </div>
+
+            
+          
+
+          </div>
+        </div>
+
+    
 
 
-  
-</section>  
+        <div class="content-header">
+            <div class="container">
+               <div class="row mb-2">
+                  <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">           
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-6" style="padding-bottom: 2%; padding-top: 2%;">
+                     <ol class="breadcrumb float-sm-right">            
+                     </ol>
+                  </div>
+                  <!-- /.col -->
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+         </div>
+      
+
+          
+      
+      
+        
+
+       
+      </div><!-- /.container-fluid -->
+    </div> <!-- /.content -->
 
 
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+
+</div>    <!-- /.content-wrapper -->
 
  <!-- /.APPRAISE MODAL  APPRAISE MODALAPPRAISE MODALAPPRAISE MODALAPPRAISE MODALAPPRAISE MODALAPPRAISE MODAL-->
   <div class="modal fade" id="modal-default">
@@ -921,6 +439,8 @@ if(isset($_POST['accepted']))
         <!-- /.modal-dialog -->
       </div>
 
+      
+
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.0-beta.1
@@ -934,7 +454,7 @@ if(isset($_POST['accepted']))
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-</div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -963,6 +483,44 @@ if(isset($_POST['accepted']))
   });
 </script>
 <script>
+
+    $("#manuscriptbtn").click(function(evt){
+      evt.preventDefault();
+      $('#manuscript_tab').show();
+      $('#unrevised_tab').hide();
+      $('#uploaded_tab').hide();
+      $("#manuscriptbtn").addClass("bg-danger");
+      $("#unrevisedbtn").removeClass("bg-danger");
+      $("#uploadedbtn").removeClass("bg-primary");
+    });
+
+    $("#unrevisedbtn").click(function(evt){
+      evt.preventDefault();
+      $('#unrevised_tab').show();
+      $('#manuscript_tab').hide();
+      $('#uploaded_tab').hide();
+      $("#unrevisedbtn").addClass("bg-danger");
+      $("#manuscriptbtn").removeClass("bg-danger");
+      $("#uploadedbtn").removeClass("bg-primary");
+    });
+
+    $("#uploadedbtn").click(function(evt){
+      evt.preventDefault();
+      $('#uploaded_tab').show();
+      $('#manuscript_tab').hide();
+      $('#unrevised_tab').hide();
+      $("#uploadedbtn").addClass("bg-primary");
+      $("#manuscriptbtn").removeClass("bg-danger");
+      $("#unrevisedbtn").removeClass("bg-danger");
+    });
+
+
+
+
+
+
+
+
   var count = 1;
    $("#Add").click(function(evt){
       evt.preventDefault();
@@ -1045,7 +603,7 @@ if(error_line_number == '' && error_appraise == '')
          $("#verdict_select").removeAttr("disabled");
          $("#accepted_with_revisions").attr("hidden", "true");
          $("#verdict_select").val(0);
-         $("#Comment").val('Rejected due to format of the document');
+         $("#Comment").val('Rejected due to the format of the document');
          $("#Comment").removeAttr("hidden", "true");
          $("#Comment_header").removeAttr("hidden", "true");
        }
@@ -1055,10 +613,10 @@ if(error_line_number == '' && error_appraise == '')
          $('#real_chcbox_format').prop('checked', false);
         $("#hello").attr("hidden", "true");
          $('#hello td').remove();
-         $("#Appraise_header").attr("hidden", "true");
          $("#verdict").attr("hidden", "true");
          $("#receipt_plagiarism").removeAttr("hidden", "true");
-         $("#Appraisal").attr("hidden", "true");
+         $("#appraisal").attr("hidden", "true");
+         $("#appraisalcard").attr("hidden", "true");
          $("#rejected").removeAttr("hidden", "false");
          $("#accepted").attr("hidden", "true");
          $("#Comment").val('Rejected Due to plagiarism');
@@ -1076,14 +634,15 @@ if(error_line_number == '' && error_appraise == '')
       if($("#real_chcbox_plagiarism").is(':checked') && $("#real_chcbox_format").is(':checked'))
        {
         $("#hello").attr("hidden", "true");
-        $("#Appraise_header").attr("hidden", "true");
         $("#verdict").attr("hidden", "true");
-        $("#Appraisal").attr("hidden", "true");
+        $("#appraisal").attr("hidden", "true");
+        $("#appraisalcard").attr("hidden", "true");
         $("#Comment").val("");
         $('#hello td').remove();
         $("#rejected").attr("hidden", "true");
         $("#accepted").removeAttr("hidden", "false");
         $("#accepted_with_revisions").attr("hidden", "true");
+
        }
        else
        {
@@ -1093,7 +652,7 @@ if(error_line_number == '' && error_appraise == '')
          $("#receipt_plagiarism").attr("hidden", "true");
          $("#rejected").removeAttr("hidden", "false");
          $("#accepted").attr("hidden", "true");
-         $("#Comment").val('Rejected due to format of the document');
+         $("#Comment").val('Rejected due to the format of the document');
          $("#Comment").removeAttr("hidden", "true");
          $("#Comment_header").removeAttr("hidden", "true");
          $("#accepted_with_revisions").attr("hidden", "true");
@@ -1106,13 +665,14 @@ $("#verdict_select").change(function(){
   {
       $("#accepted").attr("hidden", "true");
       $("#accepted_with_revisions").attr("hidden", "true");
-      $("#Comment").val('Rejected due to format of the document');
+      $("#Comment").val('Rejected due to the format of the document');
       $("#Comment").removeAttr("hidden", "true");
       $("#Comment_header").removeAttr("hidden", "true");
       $("#rejected").removeAttr("hidden", "true");
       $("#hello").attr("hidden", "true");
-      $("#Appraise_header").attr("hidden", "true");
-      $("#Appraisal").attr("hidden", "true");
+      $("#appraisal").attr("hidden", "true");
+
+      $("#appraisalcard").attr("hidden", "true");
       $('#hello td').remove();
 
 
@@ -1126,17 +686,17 @@ $("#verdict_select").change(function(){
       method:'POST',
       data:{r_id:r_id},
       success: function(data)
-      {
-      $("#hello").html(data);
-      $("#accepted").attr("hidden", "true");
-      $("#accepted_with_revisions").removeAttr("hidden", "true");
-      $("#Comment").val('Accepted with revisions by Managing Editor');
-      $("#Comment").removeAttr("hidden", "true");
-       $("#Comment_header").removeAttr("hidden", "true");
-      $("#rejected").attr("hidden", "true");
-      $("#hello").removeAttr("hidden", "true");
-      $("#Appraise_header").removeAttr("hidden", "true");
-      $("#Appraisal").removeAttr("hidden", "true");
+      {       
+        $("#accepted").attr("hidden", "true");
+        $("#accepted_with_revisions").removeAttr("hidden", "true");
+        $("#Comment").val('Accepted with revisions by Managing Editor');
+        $("#Comment").removeAttr("hidden", "true");
+        $("#Comment_header").removeAttr("hidden", "true");
+        $("#rejected").attr("hidden", "true");
+        $("#hello").removeAttr("hidden", "true");
+        $("#appraisal").removeAttr("hidden", "true");
+        $("#appraisalcard").removeAttr("hidden", "true");
+        $("#hello").html(data);
       }
     })
     
@@ -1148,9 +708,9 @@ $("#verdict_select").change(function(){
      $("#Comment").val("");
      $("#rejected").attr("hidden", "true");
      $("#hello").attr("hidden", "true");
-     $("#Appraise_header").attr("hidden", "true");
-     $("#Appraisal").attr("hidden", "true");
-    $('#hello td').remove();
+     $("#appraisal").attr("hidden", "true");
+     $("#appraisalcard").attr("hidden", "true");
+     $('#hello td').remove();
   }
 })
 

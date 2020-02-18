@@ -15,13 +15,13 @@ validate();?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap4.css">
- 
+  <script src="../../plugins/jquery/jquery.min.js"></script>
   <!-- Theme style -->
   <link rel="stylesheet" href="../../css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini layout-navbar-fixed">
+<body class="hold-transition sidebar-mini layout-navbar-fixed sidebar-collapse">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -174,7 +174,7 @@ validate();?>
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index.php" class="brand-link">
+    <a href="home.php" class="brand-link">
       <img src="../../img/istrlogo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">ISTR-OJS</span>
     </a>
@@ -183,7 +183,11 @@ validate();?>
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      
+        <div class="image">
+          <a href="profile.php?id=<?php echo $_SESSION['id'];?>" class="d-block">
+            <img src="../../img/profileicon.png" class="img-circle elevation-2" alt="User Image">
+          </a>
+        </div>
         <div class="info" style="margin-left: 5%; margin-right: 5%;">
           <a href="profile.php?id=<?php echo $_SESSION['id'];?>" class="d-block"><?php echo $_SESSION['fname']. " ". $_SESSION['mname']." ". $_SESSION['lname'] ;?></a>
         </div>

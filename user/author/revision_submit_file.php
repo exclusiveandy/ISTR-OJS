@@ -25,7 +25,7 @@ if(isset($_FILES['file']['name']) && isset($_FILES['file2']['name']))
                 $replacement = '(V'.$counter.'-'.$r_id.').';
                 $r_filename = preg_replace($pattern,$replacement,$original_name);              
                 $pdf_name = substr($r_filename, 0, strpos($r_filename, "."));
-                $target = "../../../upload_original_file/".$r_filename;
+                $target = "../../uploads/original/".$r_filename;
                 move_uploaded_file($_FILES['file']['tmp_name'],  $target); 
                 read_doc($target,  $target); 
                 pdf_conversion($r_filename,  $pdf_name); 
@@ -36,8 +36,8 @@ if(isset($_FILES['file']['name']) && isset($_FILES['file2']['name']))
                 $replacement = '(SV'.$counter.'-'.$r_id.').';
                 $s_filename = preg_replace($pattern,$replacement,$original_name_s);              
                 $pdf_name_s = substr($s_filename, 0, strpos($s_filename, "."));
-                $target2 = "../../../upload_original_file/".$s_filename;
-                $copy_file_s = "../../../upload_pdf_file/".$s_filename;
+                $target2 = "../../uploads/original/".$s_filename;
+                $copy_file_s = "../../uploads/pdf/".$s_filename;
                 move_uploaded_file($_FILES['file2']['tmp_name'],  $target2);  
 
                 read_doc($target2,  $target2);
@@ -121,7 +121,7 @@ else
 
                 $r_filename = preg_replace($pattern,$replacement,$original_name);              
                 $pdf_name = substr($r_filename, 0, strpos($r_filename, "."));
-                $target = "../../../upload_original_file/".$r_filename;
+                $target = "../../uploads/original/".$r_filename;
                 move_uploaded_file($_FILES['file']['tmp_name'],  $target); 
                 read_doc($target,  $target); 
                 pdf_conversion($r_filename,  $pdf_name); 

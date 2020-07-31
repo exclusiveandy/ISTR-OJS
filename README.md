@@ -1,4 +1,4 @@
-# ISTR-OJS
+# ISTR-OJS - on enhancement
 
 ISTR-OJS or [Institute of Science and Technology Research](https://www.pup.edu.ph/research/istr/) - Online Journal System is an online web application that facilitate the submission of researches in the fields of life science, physical science, mathematics, engineering, as well as nutrition and food technology.
 
